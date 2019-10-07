@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+umask 077
+set -euo pipefail
+cd "$(dirname $0)/.."
+
+[[ ${DEBUG:-0} == "1" ]] && \
+  set -x
+
+DOTFILES="${DOTFILES:-$HOME/src/dotfiles}"
+
+BLUE="\033[0;34m"
+NO_COLOR="\033[0m"
+RED="\033[0;31m"
+
+info() {
+  printf "$BLUE${1:-}$NO_COLOR\n"
+}
+
+error() {
+  printf "$RED${1:-}$NO_COLOR\n"
+  exit 1
+}
+
+symlink() {
+  [[ -z ${1:-} ]] && error "no file to symlink"
+  ln -sf "$DOTFILES/$1" "$HOME/.$1"
+}
+
+main() {
+  info "Installing dotfiles..."
+
+  symlink bashrc
+  symlink gitconfig
+  symlink profile
+  symlink vimrc
+
+  [[ "$(uname -o)" == "Android" ]] && {
+    symlink hushlogin
+    symlink termux
+  }
+}
+
+main "$@"

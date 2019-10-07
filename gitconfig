@@ -1,0 +1,7 @@
+[log]
+	mailmap = true
+[credential]
+	helper = store
+[user]
+	name = Ilya Mateyko
+	email = astrophena+git@gmail.com
