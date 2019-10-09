@@ -1,4 +1,4 @@
-# ~/dotfiles
+# `~/src/dotfiles`
 
 this is astrophena's dotfiles.
 
