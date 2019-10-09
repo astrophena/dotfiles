@@ -45,7 +45,10 @@ export PS1+="\w\033[0m \$ "
 export EDITOR=vim
 export VISUAL=vim
 
-export DOTFILES="$HOME/src/dotfiles"
+[[ -f "$HOME/.env" ]] && . "$HOME/.env"
+
+DOTFILES=${DOTFILES:-$HOME/src/dotfiles}
+export DOTFILES
 
 [[ -d "$DOTFILES/bin" ]] && \
   export PATH="$DOTFILES/bin:$PATH"

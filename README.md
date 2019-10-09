@@ -5,8 +5,13 @@ this is astrophena's dotfiles.
 ## supported environments
 
 * [google cloud shell](https://cloud.google.com/shell)
+* [git for windows](https://gitforwindows.org)
 * [termux](https://termux.com)
 * [ubuntu](https://ubuntu.com)
+
+## git for windows notes
+
+set `MSYS` environment variable to: `winsymlinks:nativestrict`.
 
 ## install
 
