@@ -28,6 +28,17 @@ symlink() {
 }
 
 main() {
+  local system="$(uname -s)"
+
+  [[ "$system" == CYGWIN* ]] || [[ "$system" == MINGW* ]] && {
+    info "You're running Windows. Proceeding with caution."
+
+    set +e
+    net session > /dev/null 2>&1
+    [[ ! $? -eq 0 ]] && error "Admin rights is required to install dotfiles on Windows."
+    set -e
+  }
+
   info "Installing dotfiles..."
 
   symlink bashrc
@@ -37,7 +48,10 @@ main() {
 
   [[ "$(uname -o)" == "Android" ]] && {
     symlink hushlogin
-    symlink termux
+
+    [[ ! "$(readlink "$HOME/.termux")" == "$DOTFILES/termux" ]] && {
+      symlink termux
+    }
   }
 }
 
