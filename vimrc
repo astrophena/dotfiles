@@ -35,11 +35,14 @@ filetype plugin on
 filetype indent on
 
 syntax enable
-set background=dark
-set t_Co=256
-colorscheme elflord
-highlight clear SignColumn
 
+if !has('win32unix')
+  set background=dark
+  set t_Co=256
+  colorscheme elflord
+endif
+
+highlight clear SignColumn
 highlight RedundantSpaces ctermbg=red
 match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
 
