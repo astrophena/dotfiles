@@ -1,22 +1,21 @@
 [[ $- != *i* ]] && return
 
-[[ "$(hostname)" == *devshell* ]] && {
-  [[ -f /google/devshell/bashrc.google ]] && \
-    . /google/devshell/bashrc.google
+DOTFILES=${DOTFILES:-$HOME/src/dotfiles}
+export DOTFILES
 
-  export XDG_CACHE_HOME="$(mktemp -d)"
-  export GOCACHE="$(mktemp -d)"
+[[ "$(hostname)" == *devshell* ]] && \
+  [[ -f "$DOTFILES/platform/cloudshell.bash" ]] && \
+    . "$DOTFILES/platform/cloudshell.bash"
 
-  __cleanup() {
-    rm -rf "$XDG_CACHE_HOME" "$GOCACHE"
-  }
-  trap __cleanup EXIT
+[[ "$(uname -s)" == MINGW* ]] || [[ "$(uname -s)" == CYGWIN* ]] && \
+  [[ -f "$DOTFILES/platform/windows.bash" ]] && \
+    . "$DOTFILES/platform/windows.bash"
 
-  export GOPROXY="https://proxy.golang.org"
+[[ -d "$DOTFILES/bin" ]] && \
+  export PATH="$DOTFILES/bin:$PATH"
 
-  [[ -f /usr/share/bash-completion/bash_completion ]] && \
-    . /usr/share/bash-completion/bash_completion
-}
+[[ -d "$HOME/bin" ]] && \
+  export PATH="$HOME/bin:$PATH"
 
 shopt -s checkwinsize
 
@@ -44,14 +43,3 @@ export PS1+="\w\033[0m \$ "
 
 export EDITOR=vim
 export VISUAL=vim
-
-[[ -f "$HOME/.env" ]] && . "$HOME/.env"
-
-DOTFILES=${DOTFILES:-$HOME/src/dotfiles}
-export DOTFILES
-
-[[ -d "$DOTFILES/bin" ]] && \
-  export PATH="$DOTFILES/bin:$PATH"
-
-[[ -d "$HOME/bin" ]] && \
-  export PATH="$HOME/bin:$PATH"
