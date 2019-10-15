@@ -3,13 +3,17 @@
 DOTFILES=${DOTFILES:-$HOME/src/dotfiles}
 export DOTFILES
 
-[[ "$(hostname)" == *devshell* ]] && \
-  [[ -f "$DOTFILES/platform/cloudshell.bash" ]] && \
-    . "$DOTFILES/platform/cloudshell.bash"
+__load_platform_config() {
+  if [[ "$(hostname)" == *devshell* ]]; then
+    local platform="cloudshell"
+  elif [[ "$(uname -s)" == MINGW* ]] || [[ "$(uname -s)" == CYGWIN* ]]; then
+    local platform="windows"
+  fi
 
-[[ "$(uname -s)" == MINGW* ]] || [[ "$(uname -s)" == CYGWIN* ]] && \
-  [[ -f "$DOTFILES/platform/windows.bash" ]] && \
-    . "$DOTFILES/platform/windows.bash"
+  local config="$DOTFILES/platform/${platform:-generic}.bash"
+  [[ -f "$config" ]] && . "$config"
+}
+__load_platform_config
 
 [[ -d "$DOTFILES/bin" ]] && \
   export PATH="$DOTFILES/bin:$PATH"
