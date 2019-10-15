@@ -1,6 +1,9 @@
 [log]
 	mailmap = true
 [credential]
+	# Used on Windows.
+	helper = wincred
+	# Used on other platforms.
 	helper = store
 [user]
 	name = Ilya Mateyko

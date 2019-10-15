@@ -47,9 +47,11 @@ main() {
   info "Installing dotfiles..."
 
   symlink bashrc
-  symlink gitconfig
   symlink profile
   symlink vimrc
+
+  [[ ! -d "$HOME/.config/git" ]] && mkdir "$HOME/.config/git"
+  ln -sf "$DOTFILES/config/git/config" "$HOME/.config/git/config"
 
   [[ "$(uname -o)" == "Android" ]] && {
     symlink hushlogin
