@@ -1,10 +1,8 @@
 [log]
 	mailmap = true
 [credential]
-	# Used on Windows.
-	helper = wincred
-	# Used on other platforms.
-	helper = store
+	helper = manager# Used on Windows.
+	helper = store  # Used on other platforms.
 [user]
 	name = Ilya Mateyko
 	email = gitlab@inbox.astrophena.me
