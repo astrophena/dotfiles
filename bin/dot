@@ -50,7 +50,7 @@ main() {
   symlink profile
   symlink vimrc
 
-  [[ ! -d "$HOME/.config/git" ]] && mkdir "$HOME/.config/git"
+  [[ ! -d "$HOME/.config/git" ]] && mkdir -p "$HOME/.config/git"
   ln -sf "$DOTFILES/config/git/config" "$HOME/.config/git/config"
 
   [[ "$(uname -o)" == "Android" ]] && {
