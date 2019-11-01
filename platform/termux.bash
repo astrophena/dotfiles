@@ -1,0 +1,1 @@
+alias keybase="keybase --standalone"

@@ -8,6 +8,8 @@ __load_platform_config() {
     local platform="cloudshell"
   elif [[ "$(uname -s)" == MINGW* ]] || [[ "$(uname -s)" == CYGWIN* ]]; then
     local platform="windows"
+  elif [[ "$(uname -o)" == "Android" ]]; then
+    local platform="termux"
   fi
 
   local config="$DOTFILES/platform/${platform:-generic}.bash"
