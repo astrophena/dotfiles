@@ -1,5 +1,9 @@
 [[ $- != *i* ]] && return
 
+# Cloud Shell любит пидарасить ~/.bashrc, не найдя там вот этого:
+#   /google/devshell/bashrc.google
+# Успокоим его.
+
 DOTFILES=${DOTFILES:-$HOME/src/dotfiles}
 export DOTFILES
 
@@ -49,12 +53,3 @@ export PS1+="\w\033[0m \$ "
 
 export EDITOR=vim
 export VISUAL=vim
-
-# If not running interactively, return
-case $- in
-    *i*) ;;
-      *) return;;
-esac
-if [ -f "/google/devshell/bashrc.google" ]; then
-  source "/google/devshell/bashrc.google"
-fi
