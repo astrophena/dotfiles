@@ -1,10 +1,9 @@
 [log]
 	mailmap = true
-[credential]
-	helper = manager # Used on Windows.
-	helper = store   # Used on other platforms.
 [user]
 	name = Ilya Mateyko
 	email = gitlab@inbox.astrophena.me
+[include]
+	path = $HOME/.config/git/config.platform
 [alias]
 	pushall = !git remote | xargs -L1 git push --all

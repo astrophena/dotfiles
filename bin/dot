@@ -53,6 +53,12 @@ main() {
   [[ ! -d "$HOME/.config/git" ]] && mkdir -p "$HOME/.config/git"
   ln -sf "$DOTFILES/config/git/config" "$HOME/.config/git/config"
 
+  if [[ "$system" == CYGWIN* ]] || [[ "$system" == MINGW* ]]; then
+    ln -sf "$DOTFILES/config/git/config.platform.windows" "$HOME/.config/git/config.platform"
+  else
+    ln -sf "$DOTFILES/config/git/config.platform.generic" "$HOME/.config/git/config.platform"
+  fi
+
   [[ "$(uname -o)" == "Android" ]] && {
     symlink hushlogin
 
