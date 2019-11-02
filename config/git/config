@@ -4,6 +4,6 @@
 	name = Ilya Mateyko
 	email = gitlab@inbox.astrophena.me
 [include]
-	path = $HOME/.config/git/config.platform
+	path = config.platform
 [alias]
 	pushall = !git remote | xargs -L1 git push --all

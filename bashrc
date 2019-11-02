@@ -49,3 +49,12 @@ export PS1+="\w\033[0m \$ "
 
 export EDITOR=vim
 export VISUAL=vim
+
+# If not running interactively, return
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+if [ -f "/google/devshell/bashrc.google" ]; then
+  source "/google/devshell/bashrc.google"
+fi
