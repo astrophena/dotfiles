@@ -13,7 +13,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 * [Termux](https://termux.com)
 * [Ubuntu](https://ubuntu.com)
 
-# Как установить?
+## Как установить?
 
 Склонируйте репозиторий в `~/src/dotfiles`, затем выполните `bin/dot` в
 директории с ним. Дальше следуйте его инструкциям.
