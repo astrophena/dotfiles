@@ -16,7 +16,7 @@ __load_platform_config() {
     local platform="termux"
   fi
 
-  local config="$DOTFILES/platform/${platform:-generic}.bash"
+  local config="$DOTFILES/platform/${platform:-generic}/bashrc"
   [[ -f "$config" ]] && . "$config"
 }
 __load_platform_config
