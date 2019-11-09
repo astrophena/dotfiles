@@ -9,4 +9,5 @@ __cleanup() {
 }
 trap __cleanup EXIT
 
-export GOPROXY="https://proxy.golang.org"
+[[ -d "$HOME/.local/bin" ]] && \
+  export PATH="$HOME/.local/bin:$PATH"
