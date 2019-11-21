@@ -8,7 +8,7 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set textwidth=78
+set textwidth=70
 set fo=crq
 set autoindent
 
