@@ -17,3 +17,10 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 Склонируйте репозиторий в `~/src/dotfiles`, затем выполните `bin/dot` в
 директории с ним. Дальше следуйте его инструкциям.
+
+## Чем я ещё пользуюсь?
+
+* [Типографская раскладка Ильи
+  Бирмана](https://ilyabirman.ru/projects/typography-layout/) — с ней
+  удобно вводить правильную типографику (кавычки-ёлочки, длинное тире
+  и так далее).
