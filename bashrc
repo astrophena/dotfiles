@@ -7,6 +7,9 @@
 DOTFILES=${DOTFILES:-$HOME/src/dotfiles}
 export DOTFILES
 
+export EDITOR=vim
+export VISUAL=vim
+
 __load_platform_config() {
   if [[ "$(hostname)" == *devshell* ]]; then
     local platform="cloudshell"
@@ -50,6 +53,3 @@ else
 fi
 
 export PS1+="\w\033[0m \$ "
-
-export EDITOR=vim
-export VISUAL=vim
