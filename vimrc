@@ -44,7 +44,7 @@ endif
 
 highlight clear SignColumn
 highlight RedundantSpaces ctermbg=red
-match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
+match RedundantSpaces /\s\+\%#\@<!$/
 
 set number
 set scrolloff=5
@@ -63,4 +63,4 @@ let g:netrw_dirhistmax=0
 
 set pastetoggle=<F2>
 
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
