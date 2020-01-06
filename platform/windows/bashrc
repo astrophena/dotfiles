@@ -8,6 +8,3 @@ alias word="/c/Program\ Files/Microsoft\ Office/Office14/WINWORD.EXE"
   # see "go help module-private"
   export GOPRIVATE="astrophena.me"
 }
-
-export EDITOR=micro
-export VISUAL=micro

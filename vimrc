@@ -62,3 +62,5 @@ let g:netrw_banner=0
 let g:netrw_dirhistmax=0
 
 set pastetoggle=<F2>
+
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
