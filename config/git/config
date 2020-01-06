@@ -2,7 +2,7 @@
 	mailmap = true
 [user]
 	name = Ilya Mateyko
-	email = gitlab@inbox.astrophena.me
+	email = git@inbox.astrophena.me
 [include]
 	path = config.platform
 [alias]
