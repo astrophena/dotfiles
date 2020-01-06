@@ -8,6 +8,3 @@ __cleanup() {
   rm -rf "$XDG_CACHE_HOME" "$GOCACHE"
 }
 trap __cleanup EXIT
-
-[[ -d "$HOME/.local/bin" ]] && \
-  export PATH="$HOME/.local/bin:$PATH"
