@@ -1,14 +1,11 @@
-[[ $- != *i* ]] && return
+# Cloud Shell, don't mess up with ~/.bashrc:
+#  /google/devshell/bashrc.google
+# With love, Ilya.
 
-# Cloud Shell любит пидарасить ~/.bashrc, не найдя там вот этого:
-#   /google/devshell/bashrc.google
-# Успокоим его.
+[[ $- != *i* ]] && return
 
 DOTFILES=${DOTFILES:-$HOME/src/dotfiles}
 export DOTFILES
-
-export EDITOR=vim
-export VISUAL=vim
 
 __load_platform_config() {
   if [[ "$(hostname)" == *devshell* ]]; then
@@ -43,6 +40,9 @@ alias egrep='egrep --color=auto'
 alias g=git
 alias ll='ls -ahl'
 alias r!="exec $SHELL -l"
+
+export EDITOR=vim
+export VISUAL=vim
 
 PS1="\[\e]0;\w\a\]"
 
