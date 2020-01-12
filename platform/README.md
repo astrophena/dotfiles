@@ -1,11 +1,14 @@
-# Платформо-зависимые конфиги
+# `~/src/dotfiles/platform`
 
-Я пользуюсь юниксовой средой на своём компьютере, телефоне и в [Cloud
-Shell](https://cloud.google.com/shell/) и хочу, чтобы везде работали
-одни и те же конфиги.
+This directory holds platform-specific configs.
 
-Чтобы не повторяться в конфигах и вводить какие-то особые фичи в своих
-дотфайлах я использую концепцию *платформы*. На платформе работает **bash**,
-**Git**, **Keybase**, но она имеет и какие-то свои особенности.
+## Supported platforms
 
-Собственно, в этой директории и содержатся платформо-зависимые конфиги.
+* **cloudshell** — [Cloud Shell]
+* **generic** — generic configs.
+* **termux** — [Termux].
+* **windows** — [Git for Windows].
+
+[Cloud Shell]: https://cloud.google.com/shell
+[Termux]: https://termux.com
+[Git for Windows]: https://gitforwindows.org
