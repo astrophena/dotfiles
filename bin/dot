@@ -23,7 +23,7 @@ error() {
 }
 
 symlink() {
-  [[ -z ${1:-} ]] && error "no file to symlink"
+  [[ -z ${1:-} ]] && error "symlink(): No file to symlink."
   ln -sf "$DOTFILES/$1" "$HOME/.$1"
 }
 
