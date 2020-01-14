@@ -4,6 +4,8 @@
 export XDG_CACHE_HOME="$(mktemp -d)"
 export GOCACHE="$(mktemp -d)"
 
+export PATH="$HOME/.local/bin:$PATH"
+
 __cleanup() {
   rm -rf "$XDG_CACHE_HOME" "$GOCACHE"
 }
