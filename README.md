@@ -12,5 +12,10 @@ $ cd ~/src/dotfiles
 $ bin/dot
 ```
 
+## License
+
+[CC0].
+
 [astrophena]: https://astrophena.me
 [dotfiles]: https://dotfiles.github.io
+[CC0]: https://creativecommons.org/publicdomain/zero/1.0/
