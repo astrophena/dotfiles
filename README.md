@@ -9,7 +9,7 @@ Run this:
 ```sh
 $ git clone https://github.com/astrophena/dotfiles.git ~/src/dotfiles
 $ cd ~/src/dotfiles
-$ bin/dot
+$ script/bootstrap
 ```
 
 ## License
