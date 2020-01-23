@@ -1,4 +1,4 @@
-# Cloud Shell, don't mess up with ~/.bashrc:
+# Cloud Shell, don't fuck up with ~/.bashrc:
 #  /google/devshell/bashrc.google
 # With love, Ilya.
 
@@ -14,9 +14,11 @@ __load_platform_config() {
     local platform="windows"
   elif [[ "$(uname -o)" == "Android" ]]; then
     local platform="termux"
+  else
+    local platform="generic"
   fi
 
-  local config="$DOTFILES/platform/${platform:-generic}/bashrc"
+  local config="$DOTFILES/platform/$platform/bashrc"
   [[ -f "$config" ]] && . "$config"
 }
 __load_platform_config
