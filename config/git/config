@@ -7,5 +7,6 @@
 	path = config.platform
 [alias]
 	pushall = !git remote | xargs -L1 git push --all
+	l = log
 [core]
 	autocrlf = input
