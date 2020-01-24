@@ -4,7 +4,7 @@ umask 077
 set -euo pipefail
 cd "$(dirname $0)/.."
 
-[[ ${DEBUG:-0} == "1" ]] && \
+[[ ${DEBUG:-0} == "1" ]] &&
   set -x
 
 DOTFILES="${DOTFILES:-$HOME/src/dotfiles}"
@@ -22,7 +22,7 @@ error() {
   exit 1
 }
 
-[[ "${BASH_VERSINFO[0]}" -lt 4 ]] && \
+[[ "${BASH_VERSINFO[0]}" -lt 4 ]] &&
   error "bash >=4 is required."
 
 symlink() {
@@ -36,13 +36,13 @@ main() {
   [[ "$system" == CYGWIN* ]] || [[ "$system" == MINGW* ]] && {
     info "You're running Windows. Proceeding with caution."
 
-    [[ "$system" == CYGWIN* ]] && [[ ! "${CYGWIN:-}" == "winsymlinks:nativestrict" ]] && \
+    [[ "$system" == CYGWIN* ]] && [[ ! "${CYGWIN:-}" == "winsymlinks:nativestrict" ]] &&
       error 'Set CYGWIN environment variable to `winsymlinks:nativestrict` in Windows settings and try again.'
-    [[ "$system" == MINGW* ]] && [[ ! "${MSYS:-}" == "winsymlinks:nativestrict" ]] && \
+    [[ "$system" == MINGW* ]] && [[ ! "${MSYS:-}" == "winsymlinks:nativestrict" ]] &&
       error 'Set MSYS environment variable to `winsymlinks:nativestrict` in Windows settings and try again.'
 
     set +e
-    net session > /dev/null 2>&1
+    net session >/dev/null 2>&1
     [[ ! $? -eq 0 ]] && error "Admin rights is required to install dotfiles on Windows."
     set -e
   }
