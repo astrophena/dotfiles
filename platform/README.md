@@ -4,7 +4,7 @@ This directory holds platform-specific configs.
 
 ## Supported platforms
 
-* **[cloudshell](./cloudshell)** — [Cloud Shell]
+* **[cloudshell](./cloudshell)** — [Cloud Shell].
 * **[generic](./generic)** — generic configs.
 * **[termux](./termux)** — [Termux].
 * **[windows](./windows)** — [Git for Windows].
