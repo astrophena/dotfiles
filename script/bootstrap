@@ -22,6 +22,9 @@ error() {
   exit 1
 }
 
+[[ "${BASH_VERSINFO[0]}" -lt 4 ]] && \
+  error "bash >=4 is required."
+
 symlink() {
   [[ -z ${1:-} ]] && error "symlink(): No file to symlink."
   ln -sf "$DOTFILES/$1" "$HOME/.$1"
