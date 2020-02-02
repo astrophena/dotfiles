@@ -40,6 +40,8 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 alias g=git
+alias gc='git clean -xdf'
+
 alias ll='ls -ahl'
 alias r!="exec $SHELL -l"
 
