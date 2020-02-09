@@ -14,9 +14,8 @@ $ script/bootstrap
 
 ## License
 
-Use of this source code is governed by the
-[CC0] license, except `termux/font.ttf`,
-which is licensed by it's own [license].
+Use of this source code is governed by the [CC0] license, except
+`termux/font.ttf`, which is licensed by it's own [license].
 
 [astrophena]: https://astrophena.me
 [dotfiles]: https://dotfiles.github.io

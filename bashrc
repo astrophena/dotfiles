@@ -39,6 +39,9 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+[[ -f "$HOME/src/diary/volumes/ii.md" ]] && \
+  alias diary="$EDITOR $HOME/src/diary/volumes/ii.md"
+
 alias g=git
 alias gc='git clean -xdf'
 
