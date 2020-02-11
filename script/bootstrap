@@ -61,6 +61,7 @@ main() {
 
   if [[ "$system" == CYGWIN* ]] || [[ "$system" == MINGW* ]]; then
     ln -sf "$DOTFILES/platform/windows/gitconfig" "$HOME/.config/git/config.platform"
+    ln -sf "$DOTFILES/minttyrc" "$HOME/.minttyrc"
   else
     ln -sf "$DOTFILES/platform/generic/gitconfig" "$HOME/.config/git/config.platform"
   fi
