@@ -1,55 +1,71 @@
-# Cloud Shell, don't fuck up with ~/.bashrc:
-#  /google/devshell/bashrc.google
-# With love, Ilya.
+# /google/devshell/bashrc.google
 
+# If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
 DOTFILES=${DOTFILES:-$HOME/src/dotfiles}
 export DOTFILES
 
-__load_platform_config() {
+__detect_platform() {
   if [[ "$(hostname)" == *devshell* ]]; then
-    local platform="cloudshell"
+    DOTFILES_PLATFORM="cloudshell"
   elif [[ "$(uname -s)" == MINGW* ]] || [[ "$(uname -s)" == CYGWIN* ]]; then
-    local platform="windows"
+    DOTFILES_PLATFORM="windows"
   elif [[ "$(uname -o)" == "Android" ]]; then
-    local platform="termux"
+    DOTFILES_PLATFORM="termux"
   else
-    local platform="generic"
+    DOTFILES_PLATFORM="generic"
   fi
+}
 
-  local config="$DOTFILES/platform/$platform/bashrc"
+__load_platform_bashrc() {
+  local config="${DOTFILES}/platform/${DOTFILES_PLATFORM}/bashrc"
   [[ -f "$config" ]] && . "$config"
 }
-__load_platform_config
 
-[[ -d "$DOTFILES/bin" ]] && \
-  export PATH="$DOTFILES/bin:$PATH"
-
-[[ -d "$HOME/bin" ]] && \
-  export PATH="$HOME/bin:$PATH"
+__detect_platform
+__load_platform_bashrc
 
 shopt -s checkwinsize
 
+# Disable history saving.
 unset HISTFILE
 
-alias ls='ls --color=auto'
+#
+# Aliases
+#
 
+# Colorize ls and grep.
+alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-[[ -f "$HOME/src/diary/volumes/ii.md" ]] && \
-  alias diary="$EDITOR $HOME/src/diary/volumes/ii.md"
-
+# Short Git aliases.
 alias g=git
 alias gc='git clean -xdf'
 
+# Short ls alias.
 alias ll='ls -ahl'
+
+# Reload ~/.bashrc.
 alias r!="exec $SHELL -l"
 
+#
+# Environment variables
+#
+
+# Use vim as the default editor.
 export EDITOR=vim
 export VISUAL=vim
+
+# Add $DOTFILES/bin to PATH.
+[[ -d "$DOTFILES/bin" ]] && \
+  export PATH="$DOTFILES/bin:$PATH"
+
+#
+# Set the prompt.
+#
 
 PS1="\[\e]0;\w\a\]"
 
