@@ -6,7 +6,6 @@ This directory holds platform-specific configs.
 
 * **[cloudshell](./cloudshell)** — [Cloud Shell].
 * **[generic](./generic)** — generic configs.
-* **[termux](./termux)** — [Termux].
 * **[windows](./windows)** — [Git for Windows].
 
 [Cloud Shell]: https://cloud.google.com/shell
