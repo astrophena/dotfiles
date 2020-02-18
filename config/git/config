@@ -1,12 +1,12 @@
-[log]
-	mailmap = true
+[include]
+	path = config.platform
 [user]
 	name = Ilya Mateyko
 	email = git@inbox.astrophena.me
-[include]
-	path = config.platform
+[log]
+	mailmap = true
 [alias]
-	pushall = !git remote | xargs -L1 git push --all
 	l = log
+	pushall = !git remote | xargs -L1 git push --all
 [core]
 	autocrlf = input

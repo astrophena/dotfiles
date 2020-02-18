@@ -53,9 +53,6 @@ main() {
   symlink profile
   symlink vimrc
 
-  [[ ! -d "$HOME/.config/htop" ]] && mkdir -p "$HOME/.config/htop"
-  symlink config/htop/htoprc
-
   [[ ! -d "$HOME/.config/git" ]] && mkdir -p "$HOME/.config/git"
   ln -sf "$DOTFILES/config/git/config" "$HOME/.config/git/config"
 

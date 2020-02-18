@@ -1,6 +1,5 @@
 # /google/devshell/bashrc.google
 
-# If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
 DOTFILES=${DOTFILES:-$HOME/src/dotfiles}
@@ -18,54 +17,38 @@ __detect_platform() {
   fi
 }
 
-__load_platform_bashrc() {
-  local config="${DOTFILES}/platform/${DOTFILES_PLATFORM}/bashrc"
+__load_platform_config() {
+  local config="${DOTFILES}/platform/${DOTFILES_PLATFORM}/config"
   [[ -f "$config" ]] && . "$config"
 }
 
 __detect_platform
-__load_platform_bashrc
+__load_platform_config
 
 shopt -s checkwinsize
 
-# Disable history saving.
 unset HISTFILE
 
-#
-# Aliases
-#
-
-# Colorize ls and grep.
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# Short Git aliases.
 alias g=git
 alias gc='git clean -xdf'
 
-# Short ls alias.
 alias ll='ls -ahl'
 
-# Reload ~/.bashrc.
 alias r!="exec $SHELL -l"
 
-#
-# Environment variables
-#
-
-# Use vim as the default editor.
 export EDITOR=vim
 export VISUAL=vim
 
-# Add $DOTFILES/bin to PATH.
 [[ -d "$DOTFILES/bin" ]] && \
   export PATH="$DOTFILES/bin:$PATH"
 
-#
-# Set the prompt.
-#
+[[ -d "$HOME/.local/bin" ]] && \
+  export PATH="$HOME/.local/bin:$PATH"
 
 PS1="\[\e]0;\w\a\]"
 

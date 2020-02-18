@@ -1,0 +1,2 @@
+[[ -f /google/devshell/bashrc.google ]] && \
+  . /google/devshell/bashrc.google

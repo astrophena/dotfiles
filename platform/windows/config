@@ -1,10 +1,6 @@
-# Aliases to Windows desktop apps.
-alias rgl="/c/Program\ Files/Rockstar\ Games/Launcher/Launcher.exe"
 alias chrome="/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
 alias word="/c/Program\ Files/Microsoft\ Office/Office14/WINWORD.EXE"
 
-# Saves a list of installed Scoop apps to
-# $DOTFILES/platform/windows/scoop/apps.txt.
 spb() {
   [[ ! -d "$DOTFILES/platform/windows/scoop" ]] && \
     mkdir -p "$DOTFILES/platform/windows/scoop"
@@ -12,8 +8,7 @@ spb() {
     > "$DOTFILES/platform/windows/scoop/apps.txt"
 }
 
-# Updates Scoop apps.
 spu() {
-  scoop update     # Update buckets.
-  scoop update '*' # Update apps.
+  scoop update
+  scoop update '*'
 }
