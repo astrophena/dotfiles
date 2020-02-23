@@ -2,7 +2,7 @@
 	path = config.platform
 [user]
 	name = Ilya Mateyko
-	email = git@inbox.astrophena.me
+	email = me@astrophena.me
 [log]
 	mailmap = true
 [alias]
