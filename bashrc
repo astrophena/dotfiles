@@ -13,7 +13,7 @@ __detect_platform() {
   elif [[ "$(uname -o)" == "Android" ]]; then
     DOTFILES_PLATFORM="termux"
   else
-    DOTFILES_PLATFORM="generic"
+    DOTFILES_PLATFORM="other"
   fi
 }
 
