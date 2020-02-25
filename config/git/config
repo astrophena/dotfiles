@@ -10,3 +10,5 @@
 	pushall = !git remote | xargs -L1 git push --all
 [core]
 	autocrlf = input
+[push]
+	followTags = true
