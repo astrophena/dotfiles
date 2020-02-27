@@ -1,2 +1,5 @@
 [[ -f /google/devshell/bashrc.google ]] && \
   . /google/devshell/bashrc.google
+
+export PATH="$HOME/.local/go:$PATH"
+export GOROOT="$HOME/.local/go"
