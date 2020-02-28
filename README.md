@@ -4,9 +4,9 @@ This is [astrophena]'s [dotfiles].
 
 ## Getting Started
 
-     $ git clone https://github.com/astrophena/dotfiles.git ~/src/dotfiles
-     $ cd ~/src/dotfiles
-     $ script/bootstrap
+    $ git clone https://github.com/astrophena/dotfiles.git ~/src/dotfiles
+    $ cd ~/src/dotfiles
+    $ script/bootstrap
 
 ## License
 
