@@ -37,7 +37,9 @@ alias egrep='egrep --color=auto'
 alias g=git
 alias gc='git clean -xdf'
 
-alias ll='ls -ahl'
+alias l='ls -h'
+alias ll='l -l'
+alias la='ll -a'
 
 alias r!="exec $SHELL -l"
 
