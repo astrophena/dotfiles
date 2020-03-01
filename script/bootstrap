@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO: Refactor this script.
-
 umask 077
 set -euo pipefail
 cd "$(dirname $0)/.."
@@ -27,20 +25,15 @@ error() {
 [[ "${BASH_VERSINFO[0]}" -lt 4 ]] &&
   error "bash >=4 is required."
 
-symlink() {
-  [[ -z ${1:-} ]] && error "symlink(): No file to symlink."
-  ln -sf "$DOTFILES/$1" "$HOME/.$1"
-}
-
 main() {
-  local system="$(uname -s)"
+  local platform="$(uname -s)"
 
-  [[ "$system" == CYGWIN* ]] || [[ "$system" == MINGW* ]] && {
+  [[ "$platform" == CYGWIN* ]] || [[ "$platform" == MINGW* ]] && {
     info "You're running Windows. Proceeding with caution."
 
-    [[ "$system" == CYGWIN* ]] && [[ ! "${CYGWIN:-}" == "winsymlinks:nativestrict" ]] &&
+    [[ "$platform" == CYGWIN* ]] && [[ ! "${CYGWIN:-}" == "winsymlinks:nativestrict" ]] &&
       error 'Set CYGWIN environment variable to `winsymlinks:nativestrict` in Windows settings and try again.'
-    [[ "$system" == MINGW* ]] && [[ ! "${MSYS:-}" == "winsymlinks:nativestrict" ]] &&
+    [[ "$platform" == MINGW* ]] && [[ ! "${MSYS:-}" == "winsymlinks:nativestrict" ]] &&
       error 'Set MSYS environment variable to `winsymlinks:nativestrict` in Windows settings and try again.'
 
     set +e
@@ -51,14 +44,16 @@ main() {
 
   info "Installing dotfiles..."
 
-  symlink bashrc
-  symlink profile
-  symlink vimrc
+  ln -sf "$DOTFILES/bashrc" "$HOME/.bashrc"
+  ln -sf "$DOTFILES/profile" "$HOME/.profile"
+
+  [[ ! -d "$HOME/.vim" ]] && mkdir -p "$HOME/.vim"
+  ln -sf "$DOTFILES/vimrc" "$HOME/.vim/vimrc"
 
   [[ ! -d "$HOME/.config/git" ]] && mkdir -p "$HOME/.config/git"
   ln -sf "$DOTFILES/config/git/config" "$HOME/.config/git/config"
 
-  if [[ "$system" == CYGWIN* ]] || [[ "$system" == MINGW* ]]; then
+  if [[ "$platform" == CYGWIN* ]] || [[ "$platform" == MINGW* ]]; then
     ln -sf "$DOTFILES/platform/windows/gitconfig" "$HOME/.config/git/config.platform"
     ln -sf "$DOTFILES/minttyrc" "$HOME/.minttyrc"
   else

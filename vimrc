@@ -74,5 +74,5 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugins')
-  Plug 'mattn/vim-goimports', { 'for': 'go' }
+Plug 'mattn/vim-goimports', { 'for': 'go' }
 call plug#end()
