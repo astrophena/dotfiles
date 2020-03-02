@@ -29,4 +29,4 @@ This is my [dotfiles].
 [vim]: https://www.vim.org/download.php
 [git]: https://git-scm.com/downloads
 [MIT license]: LICENSE.md
-[third-party files]: THIRD_PARTY_LICENSES.md
+[third-party files]: THIRD_PARTY_NOTICE.md
