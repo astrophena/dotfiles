@@ -2,12 +2,5 @@
 adb
 aria2
 ffmpeg
-gen
 git
-git-sizer
-go
-hub
-jq
-make
-shfmt
 youtube-dl
