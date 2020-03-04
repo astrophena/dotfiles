@@ -59,14 +59,6 @@ main() {
   else
     ln -sf "$DOTFILES/platform/other/gitconfig" "$HOME/.config/git/config.platform"
   fi
-
-  [[ "$(uname -o)" == "Android" ]] && {
-    symlink hushlogin
-
-    [[ ! "$(readlink "$HOME/.termux")" == "$DOTFILES/platform/termux" ]] && {
-      ln -sf "$DOTFILES/platform/termux" "$HOME/.termux"
-    }
-  }
 }
 
 main "$@"
