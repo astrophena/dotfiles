@@ -1,32 +1,29 @@
-# `dotfiles`
+# astrophena's dotfiles
 
-[![License](https://img.shields.io/github/license/astrophena/dotfiles)](LICENSE.md)
+[![License](https://img.shields.io/github/license/astrophena/dotfiles)](LICENSE)
 
 This is my [dotfiles].
 
 ## Installation
 
-`dotfiles` works on these [platforms].
+My dotfiles works on these [platforms].
 
-1. Install [vim] and [git] if you haven't yet.
+1. Clone this repository to `~/src/dotfiles`:
 
-2. Clone this repository to `~/src/dotfiles`:
+       $ git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
 
-        $ git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
+2. Change directory to `~/src/dotfiles` and install:
 
-3. Change directory to `~/src/dotfiles` and install:
-
-        $ cd ~/src/dotfiles
-        $ script/bootstrap
+       $ cd ~/src/dotfiles
+       $ script/bootstrap
 
 ## License
 
-[MIT license], except for [third-party files].
+[MIT].
 
 [astrophena]: https://astrophena.me
 [dotfiles]: https://dotfiles.github.io
 [platforms]: platform/README.md
 [vim]: https://www.vim.org/download.php
 [git]: https://git-scm.com/downloads
-[MIT license]: LICENSE.md
-[third-party files]: THIRD_PARTY_NOTICE.md
+[MIT]: LICENSE
