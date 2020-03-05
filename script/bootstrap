@@ -44,6 +44,7 @@ main() {
 
   info "Installing dotfiles..."
 
+  ln -sf "$DOTFILES/hushlogin" "$HOME/.hushlogin"
   ln -sf "$DOTFILES/bashrc" "$HOME/.bashrc"
   ln -sf "$DOTFILES/profile" "$HOME/.profile"
 
