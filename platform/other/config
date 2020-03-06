@@ -1,2 +1,4 @@
+alias wbs="rclone serve webdav . --addr="localhost:3000""
+
 export GOPATH="$HOME/src/.gopath"
 export PATH="$GOPATH/bin:$PATH"
