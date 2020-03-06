@@ -3,6 +3,7 @@
 [user]
 	name = Ilya Mateyko
 	email = me@astrophena.me
+	signingkey = 6FD21E9FA1EDAE94
 [log]
 	mailmap = true
 [alias]
@@ -12,3 +13,5 @@
 	autocrlf = input
 [push]
 	followTags = true
+[commit]
+	gpgsign = true
