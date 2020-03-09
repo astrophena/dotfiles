@@ -7,6 +7,8 @@
 [alias]
 	l = log
 	pushall = !git remote | xargs -L1 git push --all
+	code-changes = !git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10
+	cc = !git code-changes
 [core]
 	autocrlf = input
 [push]
