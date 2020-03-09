@@ -1,8 +1,5 @@
 [[ $- != *i* ]] && return
 
-DOTFILES=${DOTFILES:-$HOME/src/dotfiles}
-export DOTFILES
-
 shopt -s checkwinsize
 
 unset HISTFILE
@@ -27,9 +24,6 @@ e() {
 
 export EDITOR=vim
 export VISUAL=vim
-
-[[ -d "$DOTFILES/bin" ]] && \
-  export PATH="$DOTFILES/bin:$PATH"
 
 [[ -d "$HOME/.local/bin" ]] && \
   export PATH="$HOME/.local/bin:$PATH"
