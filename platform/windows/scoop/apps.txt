@@ -1,6 +1,0 @@
-7zip
-adb
-aria2
-ffmpeg
-git
-youtube-dl

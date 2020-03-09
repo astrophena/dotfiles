@@ -1,6 +1,6 @@
-MIT License
+# The MIT License (MIT)
 
-© 2019-2020 Ilya Mateyko <me@astrophena.me>
+© 2019-2020 Ilya Mateyko
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

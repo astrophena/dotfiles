@@ -1,12 +1,10 @@
 # astrophena's dotfiles
 
-[![License](https://img.shields.io/github/license/astrophena/dotfiles)](LICENSE)
+[![License](https://img.shields.io/github/license/astrophena/dotfiles)](LICENSE.md)
 
 This is my [dotfiles].
 
 ## Installation
-
-My dotfiles works on these [platforms].
 
 1. Clone this repository to `~/src/dotfiles`:
 
@@ -15,7 +13,7 @@ My dotfiles works on these [platforms].
 2. Change directory to `~/src/dotfiles` and install:
 
        $ cd ~/src/dotfiles
-       $ script/bootstrap
+       $ ./install
 
 ## License
 
@@ -23,7 +21,4 @@ My dotfiles works on these [platforms].
 
 [astrophena]: https://astrophena.me
 [dotfiles]: https://dotfiles.github.io
-[platforms]: platform/README.md
-[vim]: https://www.vim.org/download.php
-[git]: https://git-scm.com/downloads
-[MIT]: LICENSE
+[MIT]: LICENSE.md

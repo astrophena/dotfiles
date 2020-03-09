@@ -1,5 +1,3 @@
-[include]
-	path = config.platform
 [user]
 	name = Ilya Mateyko
 	email = me@astrophena.me
@@ -15,3 +13,5 @@
 	followTags = true
 [commit]
 	gpgsign = true
+[credential]
+	helper = store

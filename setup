@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+umask 077
+set -euo pipefail
+cd "$(dirname $0)/.."
+
+[[ ${DEBUG:-0} == "1" ]] &&
+  set -x
+
+DOTFILES="${DOTFILES:-$HOME/src/dotfiles}"
+
+BLUE="\033[0;34m"
+NO_COLOR="\033[0m"
+RED="\033[0;31m"
+
+info() {
+  printf "$BLUE${1:-}$NO_COLOR\n"
+}
+
+error() {
+  printf "$RED${1:-}$NO_COLOR\n"
+  exit 1
+}
+
+[[ "${BASH_VERSINFO[0]}" -lt 4 ]] &&
+  error "bash >=4 is required."
+
+main() {
+  info "Installing dotfiles..."
+
+  ln -sf "$DOTFILES/hushlogin" "$HOME/.hushlogin"
+  ln -sf "$DOTFILES/bashrc" "$HOME/.bashrc"
+  ln -sf "$DOTFILES/profile" "$HOME/.profile"
+
+  [[ ! -d "$HOME/.vim" ]] && mkdir -p "$HOME/.vim"
+  ln -sf "$DOTFILES/vimrc" "$HOME/.vim/vimrc"
+
+  [[ ! -d "$HOME/.config/git" ]] && mkdir -p "$HOME/.config/git"
+  ln -sf "$DOTFILES/gitconfig" "$HOME/.config/git/config"
+  touch "$HOME/.config/git/credentials"
+}
+
+main "$@"

@@ -1,29 +1,7 @@
-# /google/devshell/bashrc.google
-
 [[ $- != *i* ]] && return
 
 DOTFILES=${DOTFILES:-$HOME/src/dotfiles}
 export DOTFILES
-
-__detect_platform() {
-  if [[ "$(hostname)" == *devshell* ]]; then
-    DOTFILES_PLATFORM="cloudshell"
-  elif [[ "$(uname -s)" == MINGW* ]] || [[ "$(uname -s)" == CYGWIN* ]]; then
-    DOTFILES_PLATFORM="windows"
-  elif [[ "$(uname -o)" == "Android" ]]; then
-    DOTFILES_PLATFORM="termux"
-  else
-    DOTFILES_PLATFORM="other"
-  fi
-}
-
-__load_platform_config() {
-  local config="${DOTFILES}/platform/${DOTFILES_PLATFORM}/config"
-  [[ -f "$config" ]] && . "$config"
-}
-
-__detect_platform
-__load_platform_config
 
 shopt -s checkwinsize
 
@@ -42,6 +20,10 @@ alias ll='l -l'
 alias la='ll -a'
 
 alias r!="exec $SHELL -l"
+
+e() {
+  "$EDITOR" "${1:-.}"
+}
 
 export EDITOR=vim
 export VISUAL=vim
