@@ -18,15 +18,15 @@ alias la='ll -a'
 
 alias r!="exec $SHELL -l"
 
+export EDITOR=vim
+export VISUAL=vim
+
 e() {
   "$EDITOR" "${1:-.}"
 }
 
-export EDITOR=vim
-export VISUAL=vim
-
-[[ -d "$HOME/.local/bin" ]] && \
-  export PATH="$HOME/.local/bin:$PATH"
+[[ -d "$HOME/bin" ]] && \
+  export PATH="$HOME/bin:$PATH"
 
 PS1="\[\e]0;\w\a\]"
 
