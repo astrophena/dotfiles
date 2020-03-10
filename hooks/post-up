@@ -1,0 +1,6 @@
+#!/bin/sh
+
+__git_creds="$HOME/.config/git/credentials"
+if [ ! -f "$__git_creds" ]; then
+  touch "$__git_creds"
+fi
