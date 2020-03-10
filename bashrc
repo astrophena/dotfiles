@@ -28,6 +28,11 @@ e() {
 [[ -d "$HOME/bin" ]] && \
   export PATH="$HOME/bin:$PATH"
 
+[[ -d "/usr/local/go" ]] && {
+  export GOPATH="$HOME/src/.gopath"
+  export PATH="/usr/local/go/bin:$GOPATH/bin:$PATH"
+}
+
 PS1="\[\e]0;\w\a\]"
 
 if [[ "$EUID" == 0 ]]; then
