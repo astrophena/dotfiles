@@ -1,8 +1,6 @@
-# astrophena's dotfiles
+# [astrophena](https://astrophena.me)'s dotfiles
 
-[![License](https://img.shields.io/github/license/astrophena/dotfiles)](LICENSE.md)
-
-This is my dotfiles, managed with [rcm](https://github.com/astrophena/dotfiles).
+Personal configuration files, managed with [rcm](https://github.com/thoughtbot/rcm).
 
 ## Installation
 
@@ -10,8 +8,12 @@ This is my dotfiles, managed with [rcm](https://github.com/astrophena/dotfiles).
 
 2. Clone this repository to `~/src/dotfiles`:
 
-       $ git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
+        $ git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
 
 3. Install:
 
-       $ RCRC="$HOME/src/dotfiles/rcrc" rcup
+        $ RCRC="$HOME/src/dotfiles/rcrc" rcup
+
+## License
+
+[MIT](LICENSE.md).
