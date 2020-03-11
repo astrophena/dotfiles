@@ -21,10 +21,6 @@ alias r!="exec $SHELL -l"
 export EDITOR=vim
 export VISUAL=vim
 
-e() {
-  "$EDITOR" "${1:-.}"
-}
-
 [[ -d "$HOME/bin" ]] && \
   export PATH="$HOME/bin:$PATH"
 
