@@ -32,9 +32,9 @@ export VISUAL=vim
 PS1="\[\e]0;\w\a\]"
 
 if [[ "$EUID" == 0 ]]; then
-  PS1+="\033[0;31m"
+  PS1+="\[\033[0;31m\]"
 else
-  PS1+="\033[0;34m"
+  PS1+="\[\033[0;34m\]"
 fi
 
 export PS1+="\w\033[0m \$ "
