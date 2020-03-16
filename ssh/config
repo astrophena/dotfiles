@@ -1,1 +1,2 @@
 IdentityFile ~/.ssh/key
+Compression  yes
