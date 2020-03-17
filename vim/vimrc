@@ -75,5 +75,5 @@ endif
 
 call plug#begin('~/.vim/plugins')
 Plug 'mattn/vim-goimports', { 'for': 'go' }
-Plug 'hashivim/vim-terraform'
+Plug 'hashivim/vim-terraform', { 'for': ['tf', 'tfvars', 'tfstate'] }
 call plug#end()
