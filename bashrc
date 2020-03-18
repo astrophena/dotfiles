@@ -29,6 +29,9 @@ export VISUAL=vim
   export PATH="/usr/local/go/bin:$GOPATH/bin:$PATH"
 }
 
+[[ -d "/run/user/$(id -u)/keybase/kbfs" ]] && \
+  export keybase="/run/user/$(id -u)/keybase/kbfs"
+
 PS1="\[\e]0;\w\a\]"
 
 if [[ "$EUID" == 0 ]]; then
