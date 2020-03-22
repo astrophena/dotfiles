@@ -30,6 +30,8 @@ if [[ -d "/usr/local/go" ]]; then
   export GOPRIVATE="go.astrophena.me/experiments"
   export GOBIN="$HOME/bin"
   gg() {
+    [[ -z "$1" ]] && \
+      echo "Provide import path." && return 1
     tmp="$(mktemp -d)"
     pushd "$tmp" >/dev/null
     go mod init tmp
