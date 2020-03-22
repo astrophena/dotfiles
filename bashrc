@@ -24,10 +24,20 @@ export VISUAL=vim
 [[ -d "$HOME/bin" ]] && \
   export PATH="$HOME/bin:$PATH"
 
-[[ -d "/usr/local/go" ]] && {
-  export GOPATH="$HOME/src/.gopath"
+if [[ -d "/usr/local/go" ]]; then
+  export GOPATH="$HOME/src/go"
   export PATH="/usr/local/go/bin:$GOPATH/bin:$PATH"
-}
+  export GOPRIVATE="go.astrophena.me/experiments"
+  export GOBIN="$HOME/bin"
+  gg() {
+    tmp="$(mktemp -d)"
+    pushd "$tmp" >/dev/null
+    go mod init tmp
+    go get -ldflags='-s -w' -trimpath "$1"
+    popd >/dev/null
+    rm -rf "$tmp"
+  }
+fi
 
 [[ -d "/run/user/$(id -u)/keybase/kbfs" ]] && \
   export keybase="/run/user/$(id -u)/keybase/kbfs"
