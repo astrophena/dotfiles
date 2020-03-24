@@ -66,7 +66,7 @@ export VISUAL=vim
   # Module-aware `go get` that installs binaries without debug info.
   gg() {
     [[ -z "$1" ]] && \
-      echo "Provide import path." && return 1
+      echo "usage: gg <import path>" && return 1
     tmp="$(mktemp -d)"
     pushd "$tmp" >/dev/null
     go mod init tmp
