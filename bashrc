@@ -54,11 +54,14 @@ export VISUAL=vim
   export PATH="$HOME/bin:$PATH"
 
 # Set up Go toolchain.
-[[ -d "/usr/local/go" ]] && {
+__go_root="$HOME/.local/go"
+[[ -d "$__go_root" ]] && {
   # Set GOPATH to ~/src/go.
   export GOPATH="$HOME/src/go"
+  # Set GOROOT.
+  export GOROOT="$__go_root"
   # Add Go tools to PATH.
-  export PATH="/usr/local/go/bin:$PATH"
+  export PATH="$__go_root/bin:$PATH"
   # See https://golang.org/cmd/go/#hdr-Module_configuration_for_non_public_modules.
   export GOPRIVATE="go.astrophena.me/experiments"
   # Install binaries via `go get` and `go install` to ~/bin.
