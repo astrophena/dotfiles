@@ -65,7 +65,8 @@ set pastetoggle=<F2>
 
 set laststatus=1
 
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
+autocmd FileType go setlocal noexpandtab
+autocmd FileType gitconfig setlocal noexpandtab
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
