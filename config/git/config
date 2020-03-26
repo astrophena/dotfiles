@@ -1,19 +1,20 @@
-[user]
-	name = Ilya Mateyko
-	email = me@astrophena.me
-	signingkey = 6FD21E9FA1EDAE94
-[log]
-	mailmap = true
 [alias]
-	l = log
-	pushall = !git remote | xargs -L1 git push --all
+	pushall      = !git remote | xargs -L1 git push --all
 	code-changes = !git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10
-	cc = !git code-changes
-[core]
-	autocrlf = input
-[push]
-	followTags = true
+	cc           = !git code-changes
+	pa           = !git pushall
+	l            = log
 [commit]
 	gpgsign = true
 [credential]
 	helper = netrc
+[core]
+	autocrlf = input
+[log]
+	mailmap = true
+[push]
+	followTags = true
+[user]
+	name       = Ilya Mateyko
+	email      = me@astrophena.me
+	signingkey = 6FD21E9FA1EDAE94
