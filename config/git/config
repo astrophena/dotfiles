@@ -1,9 +1,9 @@
 [alias]
-	pushall      = !git remote | xargs -L1 git push --all
 	code-changes = !git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10
+	pushall      = !git remote | xargs -L1 git push --all
 	cc           = !git code-changes
-	pa           = !git pushall
 	l            = log
+	pa           = !git pushall
 [commit]
 	gpgsign = true
 [credential]
