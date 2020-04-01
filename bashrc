@@ -78,7 +78,3 @@ __go_root="$HOME/.local/go"
     rm -rf "$tmp"
   }
 }
-
-# See https://keybase.io/docs/linux-user-guide#configuring-kbfs.
-[[ -d "/run/user/$(id -u)/keybase/kbfs" ]] && \
-  export keybase="/run/user/$(id -u)/keybase/kbfs"

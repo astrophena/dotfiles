@@ -1,0 +1,14 @@
+[Unit]
+Description=Fastmail (rclone)
+AssertPathIsDirectory=%h/n/fastmail
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rclone mount \
+  fastmail: /n/fastmail
+ExecStop=/bin/fusermount -u %h/n/fastmail
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
