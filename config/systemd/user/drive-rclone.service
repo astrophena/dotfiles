@@ -1,12 +1,12 @@
 [Unit]
-Description=Fastmail (rclone)
-AssertPathIsDirectory=/n/fastmail
+Description=Drive (rclone)
+AssertPathIsDirectory=/n/drive
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/rclone mount \
-  fastmail: /n/fastmail
-ExecStop=/bin/fusermount -u /n/fastmail
+  drive: /n/drive
+ExecStop=/bin/fusermount -u /n/drive
 Restart=always
 RestartSec=10
 
