@@ -57,26 +57,31 @@ export VISUAL=vim
 __go_root="$HOME/.local/go"
 [[ -d "$__go_root" ]] && {
   # Set GOPATH to ~/src/go.
-export GOPATH="$HOME/src/go"
-# Set GOROOT.
-export GOROOT="$__go_root"
-# Add Go tools to PATH.
-export PATH="$__go_root/bin:$PATH"
-# See https://golang.org/cmd/go/#hdr-Module_configuration_for_non_public_modules.
-export GOPRIVATE="go.astrophena.me/experiments"
-# Install binaries via `go get` and `go install` to ~/bin.
-export GOBIN="$HOME/bin"
-# Module-aware `go get` that installs binaries without debug info.
-gg() {
-  [[ -z "$1" ]] && \
-    echo "usage: gg <import path>" && return 1
-  tmp="$(mktemp -d)"
-  pushd "$tmp" >/dev/null
-  go mod init tmp
-  go get -ldflags='-s -w' -trimpath "$1"
-  popd >/dev/null
-  rm -rf "$tmp"
-}
+  export GOPATH="$HOME/src/go"
+
+  # Set GOROOT.
+  export GOROOT="$__go_root"
+
+  # Add Go tools to PATH.
+  export PATH="$__go_root/bin:$PATH"
+
+  # See https://golang.org/cmd/go/#hdr-Module_configuration_for_non_public_modules.
+  export GOPRIVATE="go.astrophena.me/experiments"
+
+  # Install binaries via `go get` and `go install` to ~/bin.
+  export GOBIN="$HOME/bin"
+
+  # Module-aware `go get` that installs binaries without debug info.
+  gg() {
+    [[ -z "$1" ]] && \
+      echo "usage: gg <import path>" && return 1
+    tmp="$(mktemp -d)"
+    pushd "$tmp" >/dev/null
+    go mod init tmp
+    go get -ldflags='-s -w' -trimpath "$1"
+    popd >/dev/null
+    rm -rf "$tmp"
+  }
 }
 
 # Colorize man pages.
