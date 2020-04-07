@@ -50,7 +50,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 # Add ~/bin to PATH.
-[[ -d "$HOME/bin" ]] && \
+[[ -d "$HOME/bin" ]] &&
   export PATH="$HOME/bin:$PATH"
 
 # Set up Go toolchain.
@@ -73,7 +73,7 @@ __go_root="$HOME/.local/go"
 
   # Module-aware `go get` that installs binaries without debug info.
   gg() {
-    [[ -z "$1" ]] && \
+    [[ -z "$1" ]] &&
       echo "usage: gg <import path>" && return 1
     tmp="$(mktemp -d)"
     pushd "$tmp" >/dev/null
