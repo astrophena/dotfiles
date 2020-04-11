@@ -1,4 +1,4 @@
-# [astrophena](https://astrophena.me)'s dotfiles
+<h1 align="center">astrophena's dotfiles</h1>
 
 Personal configuration files, managed with [rcm](https://github.com/thoughtbot/rcm).
 
