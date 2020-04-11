@@ -1,0 +1,4 @@
+#!/bin/sh
+
+buf="$(cat)"
+echo "$buf"
