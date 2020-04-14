@@ -2,7 +2,7 @@
 
 Managed with [rcm](https://github.com/thoughtbot/rcm).
 
-## Installation
+<h1 align="center">Installation</h1>
 
 1. [Install rcm](https://github.com/thoughtbot/rcm#installation)
    if you haven't yet.
