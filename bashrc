@@ -78,6 +78,19 @@ gg() {
   rm -rf "$tmp"
 }
 
+# Set up nvm.
+export NVM_DIR="$HOME/.local/share/nvm"
+[[ -s "$NVM_DIR/nvm.sh" ]] &&
+  . "$NVM_DIR/nvm.sh"
+[[ -s "$NVM_DIR/bash_completion" ]] &&
+  . "$NVM_DIR/bash_completion"
+
+# Set up yarn.
+[[ -d "$HOME/.local/share/yarn/bin" ]] &&
+  export PATH="$HOME/.local/share/yarn/bin:$PATH"
+[[ -d "$HOME/.config/yarn/global/node_modules/.bin" ]] &&
+  export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 # Colorize man pages.
 man() {
   env \
@@ -90,7 +103,3 @@ man() {
     LESS_TERMCAP_us="$(printf '\e[1;32m')" \
     man "$@"
 }
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm.
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion.
