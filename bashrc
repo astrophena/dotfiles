@@ -59,7 +59,7 @@ export VISUAL=vim
   export PATH="$HOME/bin:$PATH"
 
 # Set up goenv.
-export GOENV_ROOT="$XDG_DATA_HOME/.goenv"
+export GOENV_ROOT="$XDG_DATA_HOME/goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
