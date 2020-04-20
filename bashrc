@@ -1,6 +1,11 @@
 # If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
+# See https://wiki.archlinux.org/index.php/XDG_Base_Directory
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
 # Update window size after every command.
 shopt -s checkwinsize
 
@@ -54,7 +59,7 @@ export VISUAL=vim
   export PATH="$HOME/bin:$PATH"
 
 # Set up goenv.
-export GOENV_ROOT="$HOME/.goenv"
+export GOENV_ROOT="$XDG_DATA_HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
@@ -79,17 +84,17 @@ gg() {
 }
 
 # Set up nvm.
-export NVM_DIR="$HOME/.local/share/nvm"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
 [[ -s "$NVM_DIR/nvm.sh" ]] &&
   . "$NVM_DIR/nvm.sh"
 [[ -s "$NVM_DIR/bash_completion" ]] &&
   . "$NVM_DIR/bash_completion"
 
 # Set up yarn.
-[[ -d "$HOME/.local/share/yarn/bin" ]] &&
-  export PATH="$HOME/.local/share/yarn/bin:$PATH"
-[[ -d "$HOME/.config/yarn/global/node_modules/.bin" ]] &&
-  export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+[[ -d "$XDG_DATA_HOME/yarn/bin" ]] &&
+  export PATH="$XDG_DATA_HOME/yarn/bin:$PATH"
+[[ -d "$XDG_CONFIG_HOME/yarn/global/node_modules/.bin" ]] &&
+  export PATH="$XDG_CONFIG_HOME/yarn/global/node_modules/.bin:$PATH"
 
 # Colorize man pages.
 man() {
