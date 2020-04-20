@@ -1,0 +1,503 @@
+#!/bin/sh
+# gfe: git fetch
+
+
+# human.sh - convert sizes to human-readable sizes
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+human() {
+    cat | awk \
+    'function human(x) {
+        if (x<1000) {return x} else {x/=1024}
+        s="kMGTEPZY";
+        while (x>=1000 && length(s)>1)
+            {x/=1024; s=substr(s,2)}
+        return int(x+0.5) substr(s,1,1)
+    }
+    {sub(/^[0-9]+/, human($1)); print}'
+}
+# util.sh: random stuff
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+get_sccdata() {
+    # get outta here if this function
+    # was already called
+    [ -z "$scc_data" ] || return
+
+    # although tokei is faster, many distros don't
+    # have binaries compiled with the JSON feature.
+    # (to be specific, my distro, Void.)
+    # so we're using scc instead.
+
+    # since we use scc to count lines of code, we
+    # first check if it's in $PATH
+    if ! command -v scc 2>/dev/null >&2
+    then
+        scc_data="unknown (scc not found)"
+        return
+    fi
+
+    scc_data="$(scc -fcsv)"
+}
+# commits.sh - (gfe module) retrieve number of commits
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+get_commit_count() {
+    git rev-list --count --all
+}
+# created.sh - (gfe module) retrieve date of "first" commit
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+get_created() {
+    git log \
+        --reverse \
+        --format="%ar" | sed 1q
+}
+# head.sh - (gfe module) retrieve latest commit sha
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+get_head() {
+    git log -1 --format="%h"
+}
+
+# show branch in addition to HEAD
+get_head_long() {
+    # retrieve branch, printing "detached"
+    # if in detached HEAD state
+    branch="$(git branch --show-current)"
+    branch="${branch:-detached}"
+
+    printf '%s (%s)' "$(get_head)" "$branch"
+}
+# latest.sh - (gfe module) get date of last commit
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+get_latest() {
+    git log --format="%ar" | head -n1
+}
+# user.sh - (gfe module) retrieve git username
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+get_authors() {
+    # get total amount of commits
+    total="$(git rev-list --count --all)"
+
+    # get list of all commits, listing authors only.
+    # group like authors together, then use uniq -c
+    # to get the number of commits per author.
+    # Once that is done, we can sort again by
+    # commit count and simply conver the commit count
+    # to a percentage.
+    git --no-pager log --format="%aN" | \
+        sort | \
+        uniq -c | \
+        sort -bnr | \
+        while read -r commits author
+        do
+            percentage="$(((commits*100)/total))"
+            echo "$percentage% $author $commits"
+        done | \
+        head -n "$GFE_AUTHORS_MAX"
+}
+# gitver.sh - (gfe module) get git version.
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+get_gitver() {
+    ver=$(git --version | awk '{ print $3 }')
+    printf "git v%s" "$ver"
+}
+# project.sh - (gfe module) retrieve project name
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+# TODO: scrape actual project name
+# out of git origin or README
+get_project_name() {
+    basename "$(pwd)"
+}
+# srcsize.sh - (gfe module) retreive size of source code
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+get_srcsize() {
+    # get a list of files that are tracked by git.
+    files="$(git ls-files)"
+    count="$(echo "$files" | wc -l)"
+
+    # disable warning about globbing, since it's
+    # intended.
+    # shellcheck disable=2086
+    size="$(du -sb $files 2>/dev/null | \
+        awk '{ sz+=$1 } END { print sz }')"
+
+    # convert to human-readable format.
+    hsize=$(echo "$size" | human)
+
+    printf '%s (%s files)' "$hsize" "$count"
+}
+# user.sh - (gfe module) retrieve git username
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+get_user() {
+    git config --get user.name
+}
+# upstream.sh - (gfe module) get upstream url
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+get_upstream() {
+    # get current remote for current branch
+    remote=$(git branch -lvv | \
+        awk '/*/ { print $4 }' | \
+        sed 's/[]\[]//g;y|/| |;s/ .*$//g')
+
+    # get url for remote
+    git remote get-url "$remote" --push
+}
+# version.sh - (gfe module) get latest tag name
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+get_version() {
+    # list tags, sorting by tag date
+    # then remove empty lines and
+    # show only last line
+    git tag --list \
+        --sort=taggerdate | \
+        tail -n1
+}
+# languages - (gfe module) grab list of languages.
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+get_languages() {
+    get_sccdata
+
+    # sort -fcsv: get CSV data, listing LOC for each file
+    # awk -F, ...: convert it to a list of LOC per language
+    # sort -rn -t, ...: sort list by LOC in ascending order
+    # awk -F, ...: remove LOC column
+    # head -n$GFE_LANG_MAX: get only two first languages
+    # tr '\n' ' ': finally, transform newlines to spaces
+    # shellcheck disable=2154
+    echo "$scc_data" | \
+        awk -F, -v CONVFMT=%.2g \
+        '
+        {
+            c[$1]+=$5;
+            total+=$5
+        }
+
+        END {
+            for (i in c) {
+                p=(c[i]*100)/total;
+                print i "," c[i] ",(" p " %)"
+            }
+        }' | \
+        sort -rn -t, -k2 | \
+        awk -F, '{ print $1 " " $3 }' | \
+        head -n"$GFE_LANG_MAX" | \
+        tr '\n' ' '
+}
+# loc.sh - (gfe module) get lines of code.
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+get_loc() {
+    get_sccdata
+
+    # the sed command is used to add thousands-
+    # separators to the number.
+    # unix.stackexchange.com/questions/113795/add-thousands-separator-in-a-number
+    #
+    # disable warning about undefined
+    # '$scc_data', since it's already defined
+    # in lib/util.sh
+    # shellcheck disable=2154
+    loc="$(echo "$scc_data" | \
+        awk -F, '{ loc+=$5 } END { print loc }' | \
+        sed ':a;s/\B[0-9]\{3\}\>/,&/;ta')"
+    printf '%s lines' "$loc"
+}
+# defconfig.sh - (gfe resource) default configuration
+# (c) Kiëd Llaentenn
+# see COPYING for more details
+
+# disable shellcheck warnings about
+# unused variables.
+#
+# shellcheck disable=2034
+defconfig="
+# gfetch configuration
+#
+# ensure that you use the
+# form GFE_VALUE=\${GFE_VALUE:-othervalue}
+# to ensure that it can be overridden on
+# the command line!!
+#
+# GFE_LOGO: path to file with ASCII art.
+# if it\'s value is not a valid file, then
+# it is treated as ASCII art itself.
+GFE_LOGO=\"\${GFE_LOGO:-}\"
+
+# GFE_ALIGN: number of spaces for padding between
+# name and info columnds
+GFE_ALIGN=\"\${GFE_ALIGN:-13}\"
+
+# GFE_COL1: color for the first column (the
+# name column). possible values: 1-7
+GFE_COL1=\"\${GFE_COL1:-1}\"
+
+# GFE_COL2: color for the second column (the
+# info column). possible values: 1-7
+GFE_COL2=\"\${GFE_COL2:-7}\"
+
+# GFE_COL3: color for the header/title.
+# possible values: 1-7
+GFE_COL3=\"\${GFE_COL3:-1}\"
+
+# GFE_SEP: character or text to separate each name
+# and info line.
+# e.g. using the value ':' would become 'name: info'
+# in output.
+GFE_SEP=\"\${GFE_SEP:-}\"
+
+# GFE_DIR: directory/repository for gfetch to cd
+# into.
+GFE_DIR=\"\${GFE_DIR:-}\"
+
+# GFE_AUTHOR_MAX: maximum number of authors for the
+# AUTHORS gfe field.
+GFE_AUTHORS_MAX=\"\${GFE_AUTHORS_MAX:-2}\"
+
+# GFE_LANG_MAX: maximum number of languages for the
+# LANGUAGES gfe field.
+GFE_LANG_MAX=\"\${GFE_LANG_MAX:-2}\"
+
+# main configuration. gfetch will simply execute
+# the gfe_info function on startup.
+#
+# each showinfo() call displays an info field.
+# showinfo usage: showinfo <info> <name>
+#
+# if you wish, you can even display your own text
+# with the showinfo function.
+# e.g. showinfo \"\$(git --version)\" \"GIT\"
+#
+# to display a header/title, use the showheader function.
+# showheader usage: showheader <left> <right> <sep>
+#
+# to display ASCII art, use the show_ascii
+# function without any parameters.
+#
+# NOTE: if the show_ascii function is used, it MUST
+# be the first item.
+gfe_info() {
+    printf '\n'
+    show_ascii
+    showheader \"\$(get_user)\" \"\$(get_gitver)\" \" ~ \"
+    showinfo \"\$(get_project_name)\" 'PROJECT'
+    showinfo \"\$(get_head_long)\"    'HEAD'
+    showinfo \"\$(get_version)\"      'VERSION'
+    showinfo \"\$(get_created)\"      'CREATED'
+    showinfo \"\$(get_languages)\"    'LANGUAGES'
+    showinfo \"\$(get_authors)\"      'AUTHORS'
+    showinfo \"\$(get_latest)\"       'LAST CHANGE'
+    showinfo \"\$(get_upstream)\"     'UPSTREAM'
+    showinfo \"\$(get_commit_count)\" 'COMMITS'
+    showinfo \"\$(get_loc)\"          'LOC'
+    showinfo \"\$(get_srcsize)\"      'SOURCE SIZE'
+    printf '\n'
+}
+"
+# showinfo - gfe module: print information
+# (c) Kied Llaentenn
+# see the COPYING file for more information.
+
+showinfo() {
+    # return if no information found
+    # TODO: print error message instead of silently
+    # failing
+    val="$1"
+    [ -z "$val" ] && return
+
+    key=$2
+
+    # move cursor right beyond ascii art
+    #
+    # disable warning about undefined ascii_width
+    # shellcheck disable=2154
+    printf "\033[%sC" "$ascii_width"
+
+    # print key and separator
+    printf "\033[1;3%sm%-${GFE_ALIGN}s\033[0m%s" \
+        "$GFE_COL1" "$key" "$GFE_SEP"
+
+    # print information, one line at a time
+    echo "$val" | while read -r line
+    do
+        printf '\033[3%sm%s\033[0m' "$GFE_COL2" "$line"
+
+        # WORKAROUND: move cursor forward again
+        # just in case this info field has multiple lines.
+        # this is so that multi-lined info fields are
+        # aligned properly.
+        printf '\n\033[%sC' "$((ascii_width+GFE_ALIGN))"
+    done
+
+    # WORKAROUND: move cursor back, so that next
+    # info field isn't misaligned.
+    printf '\033[%sD' "$((ascii_width+GFE_ALIGN))"
+}
+
+showheader() {
+    e="$(printf '\033')"
+
+    # shellcheck disable=1087
+    showinfo " " \
+        "$e[1;3${GFE_COL3}m$1$e[0m$3$e[1;3${GFE_COL3}m$2$e[0m"
+}
+# ascii.sh - (gfe module) handle ASCII art
+# (c) Kiëd Llaentenn <kiedtl@protonmail.com>
+# See the COPYING file for copyright information.
+
+
+show_ascii() {
+
+    # set color variables
+    #
+    # disable warning about unused variables
+    # and warning about using ${} when expanding
+    # arrays.
+    #
+    # shellcheck disable=1087,2034
+    {
+        esc="$(printf '\033')"
+        c1="$esc[31m"
+        c2="$esc[32m"
+        c3="$esc[33m"
+        c4="$esc[34m"
+        c5="$esc[35m"
+        c6="$esc[36m"
+        c7="$esc[37m"
+        c8="$esc[38m"
+        revert="$esc[7m"
+        reset="$esc[0m"
+    }
+
+    # set the default ASCII art.
+    # FIXME: better default Git art.
+    default_ascii=$(cat <<-EOF
+${c1}${revert}               ${reset}
+${c1}${revert}      \        ${reset}
+${c1}${revert}       o       ${reset}
+${c1}${revert}      / \      ${reset}
+${c1}${revert}     /   \     ${reset}
+${c1}${revert}    o     o    ${reset}
+${c1}${revert}               ${reset}
+EOF
+)
+
+    # check if user-defined variable is a file
+    # if it is not, treat it like raw ascii art
+    if [ -n "$GFE_LOGO" ]
+    then
+        if [ -f "$GFE_LOGO" ]
+        then
+            case $(file "$GFE_LOGO") in
+                *PNG*|*JPEG*)
+                    if ! command -v chafa 2>/dev/null >&2
+                    then
+                        echo "error: chafa not found."
+                        return
+                    fi
+
+                    ascii="$(chafa -s 25 "$GFE_LOGO")"
+                    ascii_width=25
+                    ;;
+                *)
+                    ascii="$(cat "$GFE_LOGO")"
+                    ;;
+            esac
+        else
+            ascii="$GFE_LOGO"
+        fi
+    else
+        ascii="$default_ascii"
+    fi
+
+# set the width of the ASCII art for the
+# showinfo function if it wasn't already set
+# before
+if [ -z "$ascii_width" ]
+then
+    while read -r line
+    do
+        [ "${#line}" -gt "${ascii_width:-0}" ] &&
+            ascii_width="${#line}"
+    done <<-EOF
+$(printf '%s' "$ascii" | sed "s/\x1b\[.m//g")
+EOF
+fi
+
+    # draw ASCII art and move cursor up again.
+    printf "$ascii\033[%sA\033[%sD" \
+        "$(printf '%s' "$ascii" | wc -l)" "$ascii_width"
+
+    # add some padding to ascii_width
+    ascii_width=$((ascii_width+3))
+}
+main() {
+    # ensure that git, sed, and awk are installed
+    if ! command -v git 2>/dev/null >&2
+    then
+        printf 'error: git not found.\n'
+        return;
+    fi
+
+    if ! command -v sed 2>/dev/null >&2
+    then
+        printf 'error: sed not found.\n'
+        return;
+    fi
+
+    if ! command -v awk 2>/dev/null >&2
+    then
+        printf 'error: awk not found.\n'
+        return;
+    fi
+
+    # find project's root directory and cd there.
+    if [ -z "$GFE_DIR" ]
+    then
+        cd "$(git rev-parse --show-toplevel)" || exit 1
+    else
+        cd "$GFE_DIR" || exit 1
+    fi
+
+    # check if configuration file exists, otherwise
+    # write default configuration.
+    configdir="${XDG_CONFIG_HOME}/gfe"
+    [ ! -d "$configdir" ] && mkdir -p "$configdir"
+    config="$configdir/config.sh"
+
+    # disable warnings about undefined variable
+    # shellcheck disable=2154
+    [ ! -f "$config" ] && echo "$defconfig" > "$config"
+
+    # execute configuration
+    # shellcheck disable=1090
+    . "$config"
+    gfe_info
+}
+
+main "$@"
