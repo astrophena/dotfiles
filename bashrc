@@ -66,7 +66,7 @@ export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
 # See https://golang.org/cmd/go/#hdr-Module_configuration_for_non_public_modules.
-export GOPRIVATE="go.astrophena.me/experiments"
+export GOPRIVATE="go.astrophena.me/x"
 
 # Install binaries via `go get` and `go install` to ~/bin.
 export GOBIN="$HOME/bin"
@@ -83,6 +83,10 @@ gg() {
   rm -rf "$tmp"
 }
 
+# Short alias to code-server.
+[[ -x "$XDG_DATA_HOME/code-server/code-server" ]] &&
+  alias code="$XDG_DATA_HOME/code-server/code-server"
+
 # Set up nvm.
 export NVM_DIR="$XDG_DATA_HOME/nvm"
 [[ -s "$NVM_DIR/nvm.sh" ]] &&
@@ -93,8 +97,8 @@ export NVM_DIR="$XDG_DATA_HOME/nvm"
 # Set up yarn.
 [[ -d "$XDG_DATA_HOME/yarn/bin" ]] &&
   export PATH="$XDG_DATA_HOME/yarn/bin:$PATH"
-[[ -d "$XDG_CONFIG_HOME/yarn/global/node_modules/.bin" ]] &&
-  export PATH="$XDG_CONFIG_HOME/yarn/global/node_modules/.bin:$PATH"
+[[ -d "$XDG_DATA_HOME/yarn/global/node_modules/.bin" ]] &&
+  export PATH="$XDG_DATA_HOME/yarn/global/node_modules/.bin:$PATH"
 
 # Colorize man pages.
 man() {
