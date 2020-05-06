@@ -85,7 +85,7 @@ gg() {
 
 # Short alias to code-server.
 [[ -x "$XDG_DATA_HOME/code-server/code-server" ]] &&
-  alias code="$XDG_DATA_HOME/code-server/code-server"
+  alias code="$XDG_DATA_HOME/code-server/code-server --auth none --disable-telemetry"
 
 # Set up nvm.
 export NVM_DIR="$XDG_DATA_HOME/nvm"
