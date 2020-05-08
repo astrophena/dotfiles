@@ -4,8 +4,6 @@
 	cc           = !git code-changes
 	l            = log
 	pa           = !git pushall
-[commit]
-	gpgsign = true
 [credential]
 	helper = netrc
 [core]
@@ -17,4 +15,3 @@
 [user]
 	name       = Ilya Mateyko
 	email      = me@astrophena.me
-	signingkey = 6FD21E9FA1EDAE94
