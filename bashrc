@@ -1,10 +1,31 @@
 # If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
+# Set up Cloud Shell environment.
+[[ -f /google/devshell/bashrc.google ]] &&
+  . /google/devshell/bashrc.google
+
+# Set up local Go toolchain.
+[[ -d "$HOME/.local/go" ]] &&
+ export GOPATH="$HOME/src/go" \
+ export GOBIN="$HOME/.local/bin" \
+ export GOROOT="$HOME/.local/go" \
+ export PATH="$GOROOT/bin:$PATH" \
+
 # See https://wiki.archlinux.org/index.php/XDG_Base_Directory
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+
+# Set the default editor.
+export EDITOR=vim
+export VISUAL=vim
+
+# Add ~/bin and ~/.local/bin to PATH.
+[[ -d "$HOME/bin" ]] &&
+  export PATH="$HOME/bin:$PATH"
+[[ -d "$HOME/.local/bin" ]] &&
+  export PATH="$HOME/.local/bin:$PATH"
 
 # Update window size after every command.
 shopt -s checkwinsize
@@ -49,14 +70,6 @@ alias la='ll -a'
 
 # Reload ~/.bashrc.
 alias r!="exec $SHELL -l"
-
-# Set the default editor.
-export EDITOR=vim
-export VISUAL=vim
-
-# Add ~/bin to PATH.
-[[ -d "$HOME/bin" ]] &&
-  export PATH="$HOME/bin:$PATH"
 
 # Colorize man pages.
 man() {
