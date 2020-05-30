@@ -7,10 +7,10 @@
 
 # Set up local Go toolchain.
 [[ -d "$HOME/.local/go" ]] &&
- export GOPATH="$HOME/src/go" \
- export GOBIN="$HOME/.local/bin" \
- export GOROOT="$HOME/.local/go" \
- export PATH="$GOROOT/bin:$PATH" \
+ export GOPATH="$HOME/src/go" &&
+ export GOBIN="$HOME/.local/bin" &&
+ export GOROOT="$HOME/.local/go" &&
+ export PATH="$GOROOT/bin:$PATH"
 
 # See https://wiki.archlinux.org/index.php/XDG_Base_Directory
 export XDG_CONFIG_HOME="$HOME/.config"
