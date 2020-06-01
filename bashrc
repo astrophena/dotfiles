@@ -8,6 +8,7 @@
 # Set up local Go toolchain.
 [[ -d "$HOME/.local/go" ]] &&
  export GOPATH="$HOME/src/go" &&
+ export GO111MODULE=on &&
  export GOBIN="$HOME/.local/bin" &&
  export GOROOT="$HOME/.local/go" &&
  export PATH="$GOROOT/bin:$PATH"
