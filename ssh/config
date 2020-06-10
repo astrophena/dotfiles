@@ -1,2 +1,10 @@
+# Keep SSH key at ~/.ssh/key.
+#
+# Generate: ssh-keygen -t ed25519 -C "$(hostname)" -q -N "" -f ~/.ssh/key
 IdentityFile ~/.ssh/key
+
+# Enable compression.
 Compression  yes
+
+# Put local configs to ~/.ssh/config.local.
+Include config.local
