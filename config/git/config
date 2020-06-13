@@ -1,9 +1,10 @@
 [alias]
 	code-changes = !git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10
 	pushall      = !git remote | xargs -L1 git push --all
-	cc           = !git code-changes
+	c            = commit -s
+	cc           = code-changes
 	l            = log
-	pa           = !git pushall
+	pa           = pushall
 [credential]
 	helper = netrc
 [core]
