@@ -1,6 +1,7 @@
 [alias]
 	code-changes = !git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10
 	pushall      = !git remote | xargs -L1 git push --all
+	a            = all
 	c            = commit -s
 	cc           = code-changes
 	l            = log
@@ -13,6 +14,8 @@
 	mailmap = true
 [push]
 	followTags = true
+[pull]
+	ff = only
 [user]
 	name       = Ilya Mateyko
 	email      = astrophena@gmail.com
