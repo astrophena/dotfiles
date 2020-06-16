@@ -6,6 +6,7 @@
 	cc           = code-changes
 	l            = log
 	pa           = pushall
+	pu           = pull
 [credential]
 	helper = netrc
 [core]
