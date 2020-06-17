@@ -66,7 +66,12 @@ shopt -s cdspell 2> /dev/null
 unset HISTFILE
 
 # Set the prompt.
-PS1="\[\e]0;\w\a\]"
+
+if [[ -z "$SSH_CONNECTION" ]]; then
+  PS1="\[\e]0;\w\a\]"
+else
+  PS1="\[\e]0;\w (on ${HOSTNAME})\a\]"
+fi
 
 if [[ "$EUID" == 0 ]]; then
   PS1+="\[\033[0;31m\]"
