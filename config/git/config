@@ -1,22 +1,22 @@
 [alias]
 	code-changes = !git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10
 	pushall      = !git remote | xargs -L1 git push --all
-	a            = !git all
-	c            = commit -s
 	cc           = !git code-changes
+	co           = !git add --all && git commit
 	l            = log
+	p            = pull
 	pa           = !git pushall
-	pu           = pull
+	pu           = push
 [credential]
 	helper = netrc
 [core]
 	autocrlf = input
 [log]
 	mailmap = true
+[pull]
+	rebase = true
 [push]
 	followTags = true
-[pull]
-	ff = only
 [user]
 	name       = Ilya Mateyko
 	email      = astrophena@gmail.com

@@ -67,10 +67,10 @@ unset HISTFILE
 
 # Set the prompt.
 
-if [[ -z "$SSH_CONNECTION" && -z "$HOSTNAME" ]]; then
+if [[ ! (-z "$SSH_CONNECTION" && -z "$HOSTNAME") ]]; then
   PS1="\[\e]0;\w\a\]"
 else
-  PS1="\[\e]0;\w (on ${HOSTNAME})\a\]"
+  PS1="\[\e]0;\w ("$HOSTNAME")\a\]"
 fi
 
 if [[ "$EUID" == 0 ]]; then
