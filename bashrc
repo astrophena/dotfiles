@@ -30,6 +30,11 @@ export VISUAL=vim
  export GOROOT="$HOME/.local/go" &&
  export PATH="$GOROOT/bin:$PATH"
 
+# Set up rbenv.
+[[ -d "$HOME/.rbenv" ]] &&
+  export PATH="$HOME/.rbenv/bin:$PATH" &&
+  eval "$(rbenv init -)"
+
 # Update window size after every command.
 shopt -s checkwinsize
 
