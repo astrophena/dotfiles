@@ -101,7 +101,7 @@ alias ll='l -l'
 alias la='ll -a'
 
 # Reload ~/.bashrc.
-alias r!="exec $SHELL -l"
+alias r="exec $SHELL -l"
 
 # No arguments: `git status`.
 # With arguments: acts like `git`.
