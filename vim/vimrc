@@ -36,11 +36,8 @@ filetype indent on
 
 syntax enable
 
-if !has('win32unix')
-  set background=dark
-  set t_Co=256
-  colorscheme elflord
-endif
+set termguicolors
+colorscheme base16-tomorrow-night
 
 highlight clear SignColumn
 highlight RedundantSpaces ctermbg=red
