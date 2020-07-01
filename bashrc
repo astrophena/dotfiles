@@ -84,7 +84,7 @@ else
   PS1+="\[\033[0;34m\]"
 fi
 
-export PS1+="\w\033[0m \$ "
+export PS1+="\w\033[0m -> "
 
 # Automatically trim long paths in the prompt.
 PROMPT_DIRTRIM=2
