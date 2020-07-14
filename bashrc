@@ -72,10 +72,10 @@ unset HISTFILE
 
 # Set the prompt.
 
-if [[ ! (-z "$SSH_CONNECTION" && -z "$HOSTNAME") ]]; then
-  PS1="\[\e]0;\w\a\]"
+if [[ ! -z "$SSH_CONNECTION" ]]; then
+  PS1="\[\e]0;\w ("$(hostname)")\a\]"
 else
-  PS1="\[\e]0;\w ("$HOSTNAME")\a\]"
+  PS1="\[\e]0;\w\a\]"
 fi
 
 if [[ "$EUID" == 0 ]]; then
@@ -84,7 +84,7 @@ else
   PS1+="\[\033[0;34m\]"
 fi
 
-export PS1+="\w\033[0m -> "
+export PS1+="\w\[\033[0m\] -> "
 
 # Automatically trim long paths in the prompt.
 PROMPT_DIRTRIM=2
