@@ -100,13 +100,15 @@ alias l='ls -h'
 alias ll='l -l'
 alias la='ll -a'
 
+# Reload ~/.bashrc.
+r() {
+  exec "$SHELL" -l
+}
+
 # Quickly update dotfiles.
 u() {
   ( cd "$HOME/src/dotfiles" && git pull ) && r
 }
-
-# Reload ~/.bashrc.
-alias r="exec $SHELL -l"
 
 # No arguments: `git status`.
 # With arguments: acts like `git`.
