@@ -100,6 +100,11 @@ alias l='ls -h'
 alias ll='l -l'
 alias la='ll -a'
 
+# Quickly update dotfiles.
+u() {
+  ( cd "$HOME/src/dotfiles" && git pull ) && r
+}
+
 # Reload ~/.bashrc.
 alias r="exec $SHELL -l"
 
