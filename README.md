@@ -1,8 +1,14 @@
-# `~/src/dotfiles`
+<div align="center">
+  <br>
+  <img src="images/wsl2.png" alt="WSL2 screenshot">
+  <h1><a href="https://github.com/astrophena">@astrophena</a> does dotfiles</h1>
+</div>
+
+A set of configuration files that defines my computing environment.
 
 Managed with [rcm](https://github.com/thoughtbot/rcm).
 
-# Installation
+## Installation
 
 1. [Install rcm](https://github.com/thoughtbot/rcm#installation)
    if you haven't yet.
