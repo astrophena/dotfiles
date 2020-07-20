@@ -13,7 +13,7 @@ Managed with [rcm](https://github.com/thoughtbot/rcm).
 1. [Install rcm](https://github.com/thoughtbot/rcm#installation)
    if you haven't yet.
 
-2. Check out this repository from GitHub to `~/src/dotfiles`:
+2. Check out this repository from [GitHub](https://github.com) to `~/src/dotfiles`:
 
 ```sh
 ~ -> git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
