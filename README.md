@@ -28,4 +28,4 @@ Managed with [rcm](https://github.com/thoughtbot/rcm).
 * `termux/font.ttf` ([license](https://github.com/tonsky/FiraCode/blob/master/LICENSE))
 * `vim/colors/base16-tomorrow-night.vim` ([license](https://raw.githubusercontent.com/chriskempson/base16-vim/master/LICENSE.md))
 * `bin/e` ([license](https://github.com/holman/dotfiles/blob/master/LICENSE.md))
-* `bin/git-credential-netrc` ([license](https://github.com/git/git/blob/master/contrib/credential/netrc/git-credential-netrc.perl#L69)
+* `bin/git-credential-netrc` ([license](https://github.com/git/git/blob/master/contrib/credential/netrc/git-credential-netrc.perl#L69))
