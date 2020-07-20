@@ -15,17 +15,21 @@ Managed with [rcm](https://github.com/thoughtbot/rcm).
 
 2. Check out this repository from GitHub to `~/src/dotfiles`:
 
-        git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
+```sh
+~ -> git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
+```
 
 3. Install:
 
-        RCRC="$HOME/src/dotfiles/rcrc" rcup
+```sh
+~ -> RCRC="$HOME/src/dotfiles/rcrc" rcup
+```
 
 # License
 
-[MIT](LICENSE.md) © Ilya Mateyko, except files:
+[MIT](LICENSE.md) © [Ilya Mateyko](https://github.com/astrophena), except files:
 
 * `termux/font.ttf` ([license](https://github.com/tonsky/FiraCode/blob/master/LICENSE))
-* `vim/colors/base16-tomorrow-night.vim` ([license](https://raw.githubusercontent.com/chriskempson/base16-vim/master/LICENSE.md))
+* `vim/colors/base16-tomorrow-night.vim` ([license](https://github.com/chriskempson/base16-vim/blob/master/LICENSE.md))
 * `bin/e` ([license](https://github.com/holman/dotfiles/blob/master/LICENSE.md))
 * `bin/git-credential-netrc` ([license](https://github.com/git/git/blob/master/contrib/credential/netrc/git-credential-netrc.perl#L69))
