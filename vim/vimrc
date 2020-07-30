@@ -35,10 +35,6 @@ filetype plugin on
 filetype indent on
 
 syntax enable
-
-set termguicolors
-colorscheme base16-tomorrow-night
-
 highlight clear SignColumn
 highlight RedundantSpaces ctermbg=red
 match RedundantSpaces /\s\+\%#\@<!$/
@@ -64,3 +60,19 @@ set laststatus=1
 
 autocmd FileType go setlocal noexpandtab
 autocmd FileType gitconfig setlocal noexpandtab
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugins')
+
+Plug 'chriskempson/base16-vim'
+Plug 'kchmck/vim-coffee-script'
+
+call plug#end()
+
+set termguicolors
+colorscheme base16-tomorrow-night
