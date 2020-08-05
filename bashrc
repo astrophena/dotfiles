@@ -98,7 +98,7 @@ alias egrep='egrep --color=auto'
 # Short ls aliases.
 alias l='ls -h'
 alias ll='l -l'
-alias la='ll -a'
+alias la='l -a'
 
 # Reload ~/.bashrc.
 r() {
