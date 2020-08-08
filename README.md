@@ -1,6 +1,6 @@
 <div align="center">
   <br>
-  <img src="images/wsl2.png" alt="WSL2 screenshot">
+  <img src="docs/images/wsl2.png" alt="Screenshot">
   <h1><a href="https://github.com/astrophena">@astrophena</a> does dotfiles</h1>
 </div>
 
@@ -16,16 +16,20 @@ Managed with [rcm](https://github.com/thoughtbot/rcm).
 2. Check out this repository from [GitHub](https://github.com) to `~/src/dotfiles`:
 
 ```sh
-~ -> git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
+git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
 ```
 
 3. Install:
 
 ```sh
-~ -> RCRC="$HOME/src/dotfiles/rcrc" rcup
+RCRC="$HOME/src/dotfiles/rcrc" rcup
 ```
 
-# License
+## Updating
+
+Just run `u`. It will pull the latest changes and reload `~/.bashrc`.
+
+## License
 
 [MIT](LICENSE.md) © [Ilya Mateyko](https://github.com/astrophena), except files:
 
