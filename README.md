@@ -27,7 +27,7 @@ RCRC="$HOME/src/dotfiles/rcrc" rcup
 
 ## Updating
 
-Just run `u`. It will pull the latest changes and reload `~/.bashrc`.
+Just run `u`. It will pull the latest changes, symlink new files and reload `~/.bashrc`.
 
 ## License
 
