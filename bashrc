@@ -70,7 +70,14 @@ shopt -s cdspell 2> /dev/null
 # Disable history persistence.
 unset HISTFILE
 
+#
 # Set the prompt.
+#
+
+# First of all, let's set the window title:
+#
+#  ~/src/dotfiles            => local
+#  ~/src/dotfiles (romana)   => in SSH session
 
 if [[ ! -z "$SSH_CONNECTION" ]]; then
   PS1="\[\e]0;\w ("$(hostname)")\a\]"
@@ -78,11 +85,17 @@ else
   PS1="\[\e]0;\w\a\]"
 fi
 
+# Colorize the prompt (red if root, blue otherwise).
 if [[ "$EUID" == 0 ]]; then
   PS1+="\[\033[0;31m\]"
 else
   PS1+="\[\033[0;34m\]"
 fi
+
+# Finally, set the prompt:
+#
+#  ~/src/dotfiles ->        => local
+#  ~/src/dotfiles romana    => in SSH session
 
 if [[ ! -z "$SSH_CONNECTION" ]]; then
   export PS1+="\w \[\033[1;33m\]"$(hostname)"\[\033[0m\] -> "
