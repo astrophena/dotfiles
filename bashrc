@@ -84,7 +84,11 @@ else
   PS1+="\[\033[0;34m\]"
 fi
 
-export PS1+="\w\[\033[0m\] -> "
+if [[ ! -z "$SSH_CONNECTION" ]]; then
+  export PS1+="\w \[\033[1;33m\]"$(hostname)"\[\033[0m\] -> "
+else
+  export PS1+="\w\[\033[0m\] -> "
+fi
 
 # Automatically trim long paths in the prompt.
 PROMPT_DIRTRIM=2
