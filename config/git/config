@@ -9,6 +9,8 @@
 	pu           = push
 [credential]
 	helper = netrc
+[commit]
+  template = ~/.config/git/message
 [core]
 	autocrlf = input
 [log]
