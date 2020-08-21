@@ -94,8 +94,8 @@ fi
 
 # Finally, set the prompt:
 #
-#  ~/src/dotfiles ->        => local
-#  ~/src/dotfiles romana    => in SSH session
+#  ~/src/dotfiles ->           => local
+#  ~/src/dotfiles romana ->    => in SSH session
 
 if [[ ! -z "$SSH_CONNECTION" ]]; then
   export PS1+="\w \[\033[1;33m\]"$(hostname)"\[\033[0m\] -> "
