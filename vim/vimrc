@@ -71,8 +71,11 @@ call plug#begin('~/.vim/plugins')
 
 Plug 'chriskempson/base16-vim'
 Plug 'kchmck/vim-coffee-script'
+Plug 'tweekmonster/gofmt.vim'
 
 call plug#end()
 
 set termguicolors
 colorscheme base16-tomorrow-night
+
+let g:gofmt_exe = 'goimports'
