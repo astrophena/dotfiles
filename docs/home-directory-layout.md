@@ -16,6 +16,7 @@ See [config/user-dirs.dirs].
   * `~/src/third_party`: third-party sources.
 * `~/tpls`: [templates].
 
+[config/user-dirs.dirs]: config/user-dirs.dirs
 [public share]: https://unix.stackexchange.com/a/365139
 [dotfiles]: https://github.com/astrophena/dotfiles
 [templates]: https://askubuntu.com/a/94739
