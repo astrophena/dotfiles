@@ -4,7 +4,8 @@
   <h1><a href="https://github.com/astrophena">@astrophena</a> does dotfiles</h1>
 </div>
 
-A set of configuration files that defines my computing environment.
+Configuration files for [Xubuntu](https://xubuntu.org), [Ubuntu on WSL2](https://docs.microsoft.com/en-us/windows/wsl/about)
+and [Termux](https://termux.com).
 
 Managed with [rcm](https://github.com/thoughtbot/rcm).
 
@@ -15,15 +16,11 @@ Managed with [rcm](https://github.com/thoughtbot/rcm).
 
 2. Check out this repository from [GitHub](https://github.com) to `~/src/dotfiles`:
 
-```sh
-git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
-```
+        $ git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
 
 3. Install:
 
-```sh
-RCRC="$HOME/src/dotfiles/rcrc" rcup
-```
+        $ RCRC="$HOME/src/dotfiles/rcrc" rcup
 
 ## Updating
 
