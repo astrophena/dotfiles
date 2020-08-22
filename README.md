@@ -1,6 +1,6 @@
 <div align="center">
   <br>
-  <img src="docs/images/wsl2.png" alt="Screenshot">
+  <img src="docs/images/xubuntu.png" alt="Xubuntu screenshot">
   <h1><a href="https://github.com/astrophena">@astrophena</a> does dotfiles</h1>
 </div>
 
