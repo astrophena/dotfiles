@@ -30,6 +30,10 @@ Run this:
 
         $ RCRC="$HOME/src/dotfiles/rcrc" rcup -f
 
+4. Install Vim plugins:
+
+        $ vim -es -u ~/.vim/vimrc -i NONE -c "PlugInstall" -c "qa"
+
 ## Updating
 
 Just run `u`. It will pull the latest changes, symlink new files and reload `~/.bashrc`.
