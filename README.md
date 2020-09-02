@@ -11,6 +11,14 @@ Managed with [rcm](https://github.com/thoughtbot/rcm).
 
 ## Installation
 
+### Automatic
+
+Run this:
+
+        $ curl -fsSL https://raw.githubusercontent.com/astrophena/dotfiles/master/install.sh | bash
+
+### Manually
+
 1. [Install rcm](https://github.com/thoughtbot/rcm#installation)
    if you haven't yet.
 
@@ -20,7 +28,7 @@ Managed with [rcm](https://github.com/thoughtbot/rcm).
 
 3. Install:
 
-        $ RCRC="$HOME/src/dotfiles/rcrc" rcup
+        $ RCRC="$HOME/src/dotfiles/rcrc" rcup -f
 
 ## Updating
 
