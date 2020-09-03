@@ -98,7 +98,11 @@ fi
 #  ~/src/dotfiles romana ->    => in SSH session
 
 if [[ ! -z "$SSH_CONNECTION" ]]; then
-  export PS1+="\w \[\033[1;33m\]"$(hostname)"\[\033[0m\] -> "
+  if [[ ! -f "/google/devshell/bashrc.google" ]]; then
+    export PS1+="\w \[\033[1;33m\]"$(hostname)"\[\033[0m\] -> "
+  else
+    export PS1+="\w \[\033[1;33m\]"cloudshell"\[\033[0m\] -> "
+  fi
 else
   export PS1+="\w\[\033[0m\] -> "
 fi
