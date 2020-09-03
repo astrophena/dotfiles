@@ -26,10 +26,10 @@ require_command() {
 [[ -d "$HOME/src/dotfiles" ]] &&
   error "dotfiles already installed. Run u to update them."
 
-require_command "rcup"
-require_command "git"
-require_command "vim"
-require_command "htop"
+require_command "rcup" "rcm"
+require_command "git" "Git"
+require_command "vim" "Vim"
+require_command "htop" "htop"
 
 info "==> Cloning Git repository..."
 git clone https://github.com/astrophena/dotfiles "$HOME/src/dotfiles"
