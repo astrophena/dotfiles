@@ -15,7 +15,7 @@ Managed with [rcm](https://github.com/thoughtbot/rcm).
 
 Run this:
 
-        $ curl -fsSL https://raw.githubusercontent.com/astrophena/dotfiles/master/install.sh | bash
+        $ curl -fsSL https://git.io/JUsjr | bash
 
 ### Manually
 
