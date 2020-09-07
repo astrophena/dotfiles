@@ -138,11 +138,7 @@ r() {
 
 # Quickly update dotfiles.
 u() {
-  ( cd "$HOME/src/dotfiles" && git pull )
-  rcup
-  vim -es -u ~/.vim/vimrc -i NONE -c "PlugUpgrade" -c "qa"
-  vim -es -u ~/.vim/vimrc -i NONE -c "PlugUpdate" -c "qa"
-  r
+  ( cd "$HOME/src/dotfiles" && git pull ) && rcup && r
 }
 
 # No arguments: `git status`.

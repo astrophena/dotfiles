@@ -36,3 +36,6 @@ git clone https://github.com/astrophena/dotfiles "$HOME/src/dotfiles"
 
 info "==> Installing dotfiles..."
 RCRC="$HOME/src/dotfiles/rcrc" rcup -f
+
+info "==> Installing Vim plugins..."
+vim -es -u ~/.vim/vimrc -i NONE -c "PlugInstall" -c "qa"

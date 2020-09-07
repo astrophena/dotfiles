@@ -4,7 +4,8 @@
   <h1><a href="https://github.com/astrophena">@astrophena</a> does dotfiles</h1>
 </div>
 
-Configuration files for [Xubuntu](https://xubuntu.org) and [Termux](https://termux.com).
+Configuration files for [Xubuntu](https://xubuntu.org), [Ubuntu on WSL2](https://docs.microsoft.com/en-us/windows/wsl/about)
+and [Termux](https://termux.com).
 
 Managed with [rcm](https://github.com/thoughtbot/rcm).
 
@@ -28,6 +29,10 @@ Run this:
 3. Install:
 
         $ RCRC="$HOME/src/dotfiles/rcrc" rcup -f
+
+4. Install Vim plugins:
+
+        $ vim -es -u ~/.vim/vimrc -i NONE -c "PlugInstall" -c "qa"
 
 ## Updating
 
