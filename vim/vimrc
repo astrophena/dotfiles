@@ -58,6 +58,8 @@ set pastetoggle=<F2>
 
 set laststatus=1
 
+set title
+
 autocmd FileType go setlocal noexpandtab
 autocmd FileType gitconfig setlocal noexpandtab
 
