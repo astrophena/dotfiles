@@ -4,11 +4,11 @@
 IdentityFile ~/.ssh/key
 
 # Enable compression.
-Compression  yes
+Compression yes
+
+# Put local configs to ~/.ssh/config.local.
+Include config.local
 
 # Keep SSH key for Cloud Shell at ~/.ssh/cloudshell.
 Match exec "test %p = 6000"
   IdentityFile ~/.ssh/cloudshell
-
-# Put local configs to ~/.ssh/config.local.
-Include config.local
