@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Quickly update dotfiles.
+
+cd "$HOME/src/dotfiles"
+git pull
+
+rcup -f

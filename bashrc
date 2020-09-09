@@ -138,7 +138,7 @@ r() {
 
 # Quickly update dotfiles.
 u() {
-  ( cd "$HOME/src/dotfiles" && git pull ) && rcup && r
+  command u && r
 }
 
 # No arguments: `git status`.
