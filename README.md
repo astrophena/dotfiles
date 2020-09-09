@@ -4,41 +4,50 @@
   <h1><a href="https://github.com/astrophena">@astrophena</a> does dotfiles</h1>
 </div>
 
-Configuration files for [Xubuntu](https://xubuntu.org), [Ubuntu on WSL2](https://docs.microsoft.com/en-us/windows/wsl/about)
-and [Termux](https://termux.com).
-
 Managed with [rcm](https://github.com/thoughtbot/rcm).
 
-## Installation
+<div align="center">
+  <h2>Installation</h2>
+</div>
 
-### Automatic
+<div align="center">
+  <h3>Automatic</h3>
+</div>
 
-Run this:
+Run this ([source code](install.sh)):
 
-        $ curl -fsSL https://git.io/JUsjr | bash
+```sh
+$ curl -fsSL https://git.io/JUsjr | bash
+```
 
-### Manually
+<div align="center">
+  <h3>Manually</h3>
+</div>
 
 1. [Install rcm](https://github.com/thoughtbot/rcm#installation)
    if you haven't yet.
 
 2. Check out this repository from [GitHub](https://github.com) to `~/src/dotfiles`:
 
-        $ git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
+```sh
+$ git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
+```
 
 3. Install:
 
-        $ RCRC="$HOME/src/dotfiles/rcrc" rcup -f
+```sh
+RCRC="$HOME/src/dotfiles/rcrc" rcup -f
+```
 
-4. Install Vim plugins:
-
-        $ vim -es -u ~/.vim/vimrc -i NONE -c "PlugInstall" -c "qa"
-
-## Updating
+<div align="center">
+  <h2>Updating</h2>
+</div>
 
 Just run `u`. It will pull the latest changes, symlink new files and reload `~/.bashrc`.
 
-## License
+<div align="center">
+  <h2>License</h2>
+</div>
 
 [MIT](LICENSE.md) © [Ilya Mateyko](https://github.com/astrophena), except files:
 
