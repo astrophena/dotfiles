@@ -163,3 +163,7 @@ man() {
     LESS_TERMCAP_us="$(printf '\e[1;32m')" \
     man "$@"
 }
+
+# Load local settings and environment variables.
+[[ -f "$HOME/.bashrc.local" ]] && \
+  . "$HOME/.bashrc.local"
