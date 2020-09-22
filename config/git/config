@@ -10,7 +10,7 @@
 [credential]
 	helper = netrc
 [commit]
-  template = ~/.config/git/message
+	template = ~/.config/git/message
 [core]
 	autocrlf = input
 [log]
