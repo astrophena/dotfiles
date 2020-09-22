@@ -2,9 +2,8 @@
   <br>
   <img src="docs/images/xubuntu.png" alt="Xubuntu screenshot">
   <h1><a href="https://github.com/astrophena">@astrophena</a> does dotfiles</h1>
+  <p>Managed with [rcm](https://github.com/thoughtbot/rcm).</p>
 </div>
-
-Managed with [rcm](https://github.com/thoughtbot/rcm).
 
 <div align="center">
   <h2>Installation</h2>
@@ -16,9 +15,7 @@ Managed with [rcm](https://github.com/thoughtbot/rcm).
 
 Run this ([source code](install.sh)):
 
-```sh
-$ curl -fsSL https://git.io/JUsjr | bash
-```
+        $ curl -fsSL https://git.io/JUsjr | bash
 
 <div align="center">
   <h3>Manually</h3>
@@ -29,15 +26,11 @@ $ curl -fsSL https://git.io/JUsjr | bash
 
 2. Check out this repository from [GitHub](https://github.com) to `~/src/dotfiles`:
 
-```sh
-$ git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
-```
+        $ git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
 
 3. Install:
 
-```sh
-RCRC="$HOME/src/dotfiles/rcrc" rcup -f
-```
+        $ RCRC="$HOME/src/dotfiles/rcrc" rcup -f
 
 <div align="center">
   <h2>Updating</h2>
