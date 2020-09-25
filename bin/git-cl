@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# Quickly clone GitHub repos.
+
+GITHUB_USERNAME=astrophena
+
+if [ -z "$1" ]; then
+  echo 'repository name required'
+  exit 1
+fi
+
+git clone "https://github.com/${GITHUB_USERNAME}/$1"
