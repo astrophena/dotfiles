@@ -9,28 +9,9 @@
   <h2>Installation</h2>
 </div>
 
-<div align="center">
-  <h3>Automatic</h3>
-</div>
+Run this (read the [source code](install.sh) before running!):
 
-Run this ([source code](install.sh)):
-
-        $ curl -fsSL https://git.io/JUsjr | bash
-
-<div align="center">
-  <h3>Manually</h3>
-</div>
-
-1. [Install rcm](https://github.com/thoughtbot/rcm#installation)
-   if you haven't yet.
-
-2. Check out this repository from [GitHub](https://github.com) to `~/src/dotfiles`:
-
-        $ git clone https://github.com/astrophena/dotfiles ~/src/dotfiles
-
-3. Install:
-
-        $ RCRC="$HOME/src/dotfiles/rcrc" rcup -f
+        $ curl -fsSL https://git.io/astrophena-dotfiles-install | bash
 
 <div align="center">
   <h2>Updating</h2>
