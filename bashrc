@@ -74,15 +74,16 @@ unset HISTFILE
 # Set the prompt.
 #
 
-# First of all, let's set the window title:
+# On Google Cloud Shell we have random hostnames like this:
+#   cs-25870698597-default-default-tcxh5
+# So let’s use use cloudshell in prompt and window title instead of hostname.
+
+# First of all, let’s set the window title:
 #
 #  ~/src/dotfiles            => local
 #  ~/src/dotfiles (romana)   => in SSH session
 
 if [[ ! -z "$SSH_CONNECTION" ]]; then
-  # On Google Cloud Shell we have random hostnames like this:
-  #   cs-25870698597-default-default-tcxh5
-  # So use cloudshell in prompt and window title instead of hostname.
   if [[ ! -f "/google/devshell/bashrc.google" ]]; then
     PS1="\[\e]0;\w ("$(hostname)")\a\]"
   else
@@ -105,9 +106,6 @@ fi
 #  ~/src/dotfiles romana ->    => in SSH session
 
 if [[ ! -z "$SSH_CONNECTION" ]]; then
-  # On Google Cloud Shell we have random hostnames like this:
-  #   cs-25870698597-default-default-tcxh5
-  # So use cloudshell in prompt and window title instead of hostname.
   if [[ ! -f "/google/devshell/bashrc.google" ]]; then
     export PS1+="\w \[\033[1;33m\]"$(hostname)"\[\033[0m\] -> "
   else
