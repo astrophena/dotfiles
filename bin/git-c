@@ -5,7 +5,7 @@
 GITHUB_USERNAME=astrophena
 
 if [ -z "$1" ]; then
-  echo 'repository name required'
+  echo 'repo name is required'
   exit 1
 fi
 
