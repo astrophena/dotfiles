@@ -11,7 +11,7 @@
 
 Run this (read the [source code](install.sh) before running!):
 
-        $ curl -fsSL https://git.io/astrophena-dotfiles-install | bash
+        $ curl -fsSL https://astrophena.name/dotfiles/install | bash
 
 <div align="center">
   <h2>Updating</h2>
