@@ -27,5 +27,6 @@ Just run `u`. It will pull the latest changes, symlink new files and reload `~/.
 
 * `config/git/message` ([license](https://github.com/thoughtbot/dotfiles/blob/master/LICENSE))
 * `termux/font.ttf` ([license](https://github.com/tonsky/FiraCode/blob/master/LICENSE))
+* `bin/{glacierabort,glacierupload,treehash}` ([license](https://github.com/numblr/glaciertools/blob/master/LICENSE)
 * `bin/e` ([license](https://github.com/holman/dotfiles/blob/master/LICENSE.md))
 * `bin/git-credential-netrc` ([license](https://github.com/git/git/blob/master/contrib/credential/netrc/git-credential-netrc.perl#L69))
