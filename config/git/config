@@ -22,3 +22,5 @@
 [user]
 	name       = Ilya Mateyko
 	email      = astrophena@gmail.com
+[init]
+	defaultBranch = master
