@@ -21,6 +21,6 @@
 	followTags = true
 [user]
 	name       = Ilya Mateyko
-	email      = astrophena@gmail.com
+	email      = me@astrophena.name
 [init]
 	defaultBranch = master
