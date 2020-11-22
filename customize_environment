@@ -1,0 +1,5 @@
+# See https://cloud.google.com/shell/docs/configuring-cloud-shell#environment_customization_script.
+
+# Remove rvm.
+/usr/local/rvm/bin/rvm implode --force
+rm /etc/rvmrc
