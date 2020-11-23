@@ -73,11 +73,18 @@ call plug#begin('~/.vim/plugins')
 
 Plug 'chriskempson/base16-vim'
 Plug 'kchmck/vim-coffee-script'
-Plug 'tweekmonster/gofmt.vim'
+if executable('go')
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
+endif
 
 call plug#end()
 
+if executable('go')
+  let g:go_fmt_command='goimports'
+  let g:go_auto_type_info=1
+  au filetype go inoremap <buffer> . .<C-x><C-o>
+  set completeopt-=preview
+endif
+
 set termguicolors
 colorscheme base16-tomorrow-night
-
-let g:gofmt_exe = 'goimports'
