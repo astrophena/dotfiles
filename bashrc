@@ -23,12 +23,25 @@ export VISUAL=vim
   export PATH="$HOME/.local/bin:$PATH"
 
 # Set up local Go toolchain.
-[[ -d "$HOME/.local/go" ]] &&
- export GOPATH="$HOME/src/go" &&
- export GO111MODULE=on &&
- export GOBIN="$HOME/.local/bin" &&
- export GOROOT="$HOME/.local/go" &&
- export PATH="$GOROOT/bin:$PATH"
+[[ -d "$HOME/.local/go" ]] && {
+  export GOPATH="$HOME/src/go"
+  export GO111MODULE=on
+  export GOBIN="$HOME/.local/bin"
+  export GOROOT="$HOME/.local/go"
+  export PATH="$GOROOT/bin:$PATH"
+
+  # Quickly switch to Go tip.
+  # To switch back, use `r`.
+  gotip() {
+    if [[ -d "$HOME/.local/gotip" ]]; then
+      export GOROOT="$HOME/.local/gotip"
+      export PATH="$HOME/.local/gotip/bin:$PATH"
+      echo "switched to $(go version)"
+    else
+      echo "no go tip found; see https://tip.golang.org/doc/install/source"
+    fi
+  }   
+}
 
 # Set up rbenv.
 [[ -d "$HOME/.rbenv" ]] &&
