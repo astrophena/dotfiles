@@ -33,7 +33,7 @@ export VISUAL=vim
   # Quickly switch to Go tip.
   # To switch back, use `r`.
   gotip() {
-    if [[ -d "$HOME/.local/gotip" ]]; then
+    if [[ -f "$HOME/.local/gotip/bin/go" ]]; then
       export GOROOT="$HOME/.local/gotip"
       export PATH="$HOME/.local/gotip/bin:$PATH"
       echo "switched to $(go version)"
