@@ -24,7 +24,13 @@ export VISUAL=vim
 
 # Set up local Go toolchain.
 [[ -d "$HOME/.local/go" ]] && {
-  export GOPATH="$HOME/src/go"
+  if [[ -f "/google/devshell/bashrc.google" ]]; then
+    # On Cloud Shell, store GOPATH in a temporary directory.
+    export GOPATH="/tmp/gopath"
+  else
+    export GOPATH="$HOME/src/go"
+  fi
+
   export GO111MODULE=on
   export GOBIN="$HOME/.local/bin"
   export GOROOT="$HOME/.local/go"
