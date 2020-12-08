@@ -46,7 +46,7 @@ _() {
   require_command "htop" "htop"
 
   info "==> Cloning Git repository..."
-  git clone https://github.com/astrophena/dotfiles "$HOME/src/dotfiles"
+  git clone -q https://github.com/astrophena/dotfiles "$HOME/src/dotfiles"
 
   info "==> Installing dotfiles..."
   RCRC="$HOME/src/dotfiles/rcrc" rcup -f
