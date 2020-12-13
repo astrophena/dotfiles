@@ -23,9 +23,17 @@ export VISUAL=vim
   export PATH="$HOME/.local/bin:$PATH"
 
 # Set up local Go toolchain.
-[[ -d "$HOME/.local/go" ]] && {
+__setup_go() {
+  if [[ -d "$HOME/.local/go" ]]; then
+    local goroot="$HOME/.local/go"
+  elif [[ -d "/usr/local/go" ]]; then
+    local goroot="/usr/local/go"
+  else
+    # no go found, give up
+    return
+  fi
+
   if [[ -f "/google/devshell/bashrc.google" ]]; then
-    # On Cloud Shell, store GOPATH in a temporary directory.
     export GOPATH="/tmp/gopath"
   else
     export GOPATH="$HOME/src/go"
@@ -33,20 +41,21 @@ export VISUAL=vim
 
   export GO111MODULE=on
   export GOBIN="$HOME/.local/bin"
-  export GOROOT="$HOME/.local/go"
-  export PATH="$GOROOT/bin:$PATH"
+  export GOROOT="$goroot"
+  export PATH="$goroot/bin:$PATH"
+}
+__setup_go
 
-  # Quickly switch to Go tip.
-  # To switch back, use `r`.
-  gotip() {
-    if [[ -f "$HOME/.local/gotip/bin/go" ]]; then
-      export GOROOT="$HOME/.local/gotip"
-      export PATH="$HOME/.local/gotip/bin:$PATH"
-      echo "switched to $(go version)"
-    else
-      echo "no go tip found; see https://tip.golang.org/doc/install/source"
-    fi
-  }   
+# Quickly switch to Go tip.
+# To switch back, use `r`.
+gotip() {
+  if [[ -f "$HOME/.local/gotip/bin/go" ]]; then
+    export GOROOT="$HOME/.local/gotip"
+    export PATH="$HOME/.local/gotip/bin:$PATH"
+    echo "switched to $(go version)"
+  else
+    echo "no go tip found; see https://tip.golang.org/doc/install/source"
+  fi
 }
 
 # Set up rbenv.
@@ -110,7 +119,7 @@ if [[ ! -z "$SSH_CONNECTION" ]]; then
   fi
 else
   PS1="\[\e]0;\w\a\]"
-fi
+  fi
 
 # Colorize the prompt (red if root, blue otherwise).
 if [[ "$EUID" == 0 ]]; then
@@ -132,7 +141,7 @@ if [[ ! -z "$SSH_CONNECTION" ]]; then
   fi
 else
   export PS1+="\w\[\033[0m\] -> "
-fi
+  fi
 
 # Automatically trim long paths in the prompt.
 PROMPT_DIRTRIM=2
@@ -179,7 +188,7 @@ man() {
     LESS_TERMCAP_ue="$(printf '\e[0m')" \
     LESS_TERMCAP_us="$(printf '\e[1;32m')" \
     man "$@"
-}
+  }
 
 # Load local settings and environment variables.
 [[ -f "$HOME/.bashrc.local" ]] && \
