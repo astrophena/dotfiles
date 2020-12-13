@@ -8,6 +8,6 @@ if [ -f /google/devshell/bashrc.google ]; then
   TAGS="cloudshell ${TAGS}"
 fi
 
-if [ "$(uname -s)" = "Android" ]; then
+if [ "$(uname -o)" = "Android" ]; then
   TAGS="termux ${TAGS}"
 fi
