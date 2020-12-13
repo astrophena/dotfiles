@@ -4,5 +4,4 @@
 
 cd "$HOME/src/dotfiles"
 git pull
-
 rcup -f

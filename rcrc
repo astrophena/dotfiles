@@ -1,3 +1,13 @@
 DOTFILES_DIRS="$HOME/src/dotfiles"
 EXCLUDES="*.md docs install.sh"
 UNDOTTED="bin"
+
+TAGS="bash curl git ruby ssh vim"
+
+if [ -f /google/devshell/bashrc.google ]; then
+  TAGS="cloudshell ${TAGS}"
+fi
+
+if [ "$(uname -s)" = "Android" ]; then
+  TAGS="termux ${TAGS}"
+fi
