@@ -1,8 +1,7 @@
 #!/bin/bash
 
-set -e
-
-[[ -z "$DEBUG" ]] || set -x
+set -euo pipefail
+[[ -z "${DEBUG:-}" ]] || set -x
 
 no_color='\033[0m'
 
@@ -17,14 +16,12 @@ error() {
   exit 1
 }
 
-# Create a .netrc file with needed permissions.
 [[ ! -f "$HOME/.netrc" ]] && {
   info "==> Creating .netrc file..."
   touch "$HOME/.netrc"
   chmod 600 "$HOME/.netrc"
 }
 
-# Generate an SSH key.
 [[ ! -f "$HOME/.ssh/key" ]] && {
   info "==> Generating SSH key..."
   ssh-keygen -t ed25519 -C "$(hostname)" -q -N "" -f ~/.ssh/key
