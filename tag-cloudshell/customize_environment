@@ -1,5 +1,16 @@
 # See https://cloud.google.com/shell/docs/configuring-cloud-shell#environment_customization_script.
 
-# Remove rvm.
+# Remove rvm
 /usr/local/rvm/bin/rvm implode --force
 rm /etc/rvmrc
+
+# DNSSEC validation
+cat <<EOF | tee /etc/resolv.conf
+# Use Cloudflare DNS
+nameserver 1.1.1.1
+nameserver 1.0.0.1
+# DNSSEC validation
+anchor /var/lib/unbound/root.key
+EOF
+apt update -y && apt install -y unbound
+unbound-anchor
