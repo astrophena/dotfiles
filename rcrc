@@ -4,6 +4,10 @@ UNDOTTED="bin"
 
 TAGS="base bash curl git htop ssh vim"
 
+if command -v gh &> /dev/null; then
+  TAGS="gh ${TAGS}"
+fi
+
 if [ -f /google/devshell/bashrc.google ]; then
   TAGS="cloudshell ${TAGS}"
 fi
