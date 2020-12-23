@@ -46,18 +46,6 @@ __setup_go() {
 }
 __setup_go
 
-# Quickly switch to Go tip.
-# To switch back, use `r`.
-gotip() {
-  if [[ -f "$HOME/.local/gotip/bin/go" ]]; then
-    export GOROOT="$HOME/.local/gotip"
-    export PATH="$HOME/.local/gotip/bin:$PATH"
-    echo "switched to $(go version)"
-  else
-    echo "no go tip found; see https://tip.golang.org/doc/install/source"
-  fi
-}
-
 # Update window size after every command.
 shopt -s checkwinsize
 
