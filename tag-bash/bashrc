@@ -46,6 +46,9 @@ __setup_go() {
 }
 __setup_go
 
+# Enable color support in mage.
+export MAGEFILE_ENABLE_COLOR=true
+
 # Update window size after every command.
 shopt -s checkwinsize
 
@@ -139,6 +142,10 @@ alias egrep='egrep --color=auto'
 alias l='ls -h'
 alias ll='l -l'
 alias la='l -a'
+
+# Short mage aliases.
+alias m=mage
+alias ml='mage -l'
 
 # Reload ~/.bashrc.
 r() {
