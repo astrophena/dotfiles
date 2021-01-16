@@ -33,11 +33,7 @@ __setup_go() {
     return
   fi
 
-  if [[ -f "/google/devshell/bashrc.google" ]]; then
-    export GOPATH="/tmp/gopath"
-  else
-    export GOPATH="$HOME/src/go"
-  fi
+  export GOPATH="$HOME/src/go"
 
   export GO111MODULE=on
   export GOBIN="$HOME/.local/bin"
