@@ -2,7 +2,7 @@ DOTFILES_DIRS="$HOME/code/dotfiles"
 EXCLUDES="*.md docs install.sh"
 UNDOTTED="bin"
 
-TAGS="base bash curl git htop ssh vim"
+TAGS="base bash curl git kitty htop ssh vim"
 
 if [ -f /google/devshell/bashrc.google ]; then
   TAGS="cloudshell ${TAGS}"
