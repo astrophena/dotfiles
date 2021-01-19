@@ -1,6 +1,0 @@
-git_protocol: https
-editor: e
-prompt: enabled
-pager: less
-aliases:
-  co: pr checkout

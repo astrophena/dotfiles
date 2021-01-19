@@ -33,7 +33,7 @@ __setup_go() {
     return
   fi
 
-  export GOPATH="$HOME/src/go"
+  export GOPATH="$HOME/code/go"
 
   export GO111MODULE=on
   export GOBIN="$HOME/.local/bin"
@@ -90,8 +90,8 @@ unset HISTFILE
 
 # First of all, let’s set the window title:
 #
-#  ~/src/dotfiles            => local
-#  ~/src/dotfiles (romana)   => in SSH session
+#  ~/code/dotfiles            => local
+#  ~/code/dotfiles (romana)   => in SSH session
 
 if [[ ! -z "$SSH_CONNECTION" ]]; then
   if [[ ! -f "/google/devshell/bashrc.google" ]]; then
@@ -112,8 +112,8 @@ fi
 
 # Finally, set the prompt:
 #
-#  ~/src/dotfiles ->           => local
-#  ~/src/dotfiles romana ->    => in SSH session
+#  ~/code/dotfiles ->           => local
+#  ~/code/dotfiles romana ->    => in SSH session
 
 if [[ ! -z "$SSH_CONNECTION" ]]; then
   if [[ ! -f "/google/devshell/bashrc.google" ]]; then

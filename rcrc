@@ -1,12 +1,8 @@
-DOTFILES_DIRS="$HOME/src/dotfiles"
+DOTFILES_DIRS="$HOME/code/dotfiles"
 EXCLUDES="*.md docs install.sh"
 UNDOTTED="bin"
 
 TAGS="base bash curl git htop ssh vim"
-
-if command -v gh &> /dev/null; then
-  TAGS="gh ${TAGS}"
-fi
 
 if [ -f /google/devshell/bashrc.google ]; then
   TAGS="cloudshell ${TAGS}"
@@ -14,4 +10,6 @@ fi
 
 if [ "$(uname -o)" = "Android" ]; then
   TAGS="termux ${TAGS}"
+else
+  TAGS="xubuntu ${TAGS}"
 fi
