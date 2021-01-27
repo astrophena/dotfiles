@@ -14,3 +14,10 @@ anchor /var/lib/unbound/root.key
 EOF
 apt update -y && apt install -y unbound
 unbound-anchor
+
+# Setup PostgreSQL for Miniflux development
+service postgresql start
+sudo -u postgres psql -U postgres postgres <<EOF
+ CREATE USER miniflux WITH password 'miniflux';
+EOF
+sudo -u postgres createdb -O miniflux miniflux
