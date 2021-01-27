@@ -8,6 +8,10 @@ if [ -f /google/devshell/bashrc.google ]; then
   TAGS="cloudshell ${TAGS}"
 fi
 
+if command -v neofetch >/dev/null 2>&1; then
+  TAGS="neofetch ${TAGS}"
+fi
+
 if command -v kitty >/dev/null 2>&1; then
   TAGS="kitty ${TAGS}"
 fi

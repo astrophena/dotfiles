@@ -4,6 +4,9 @@
 /usr/local/rvm/bin/rvm implode --force
 rm /etc/rvmrc
 
+# Install unbound and neofetch
+apt update -y && apt install -y unbound neofetch
+
 # DNSSEC validation
 cat <<EOF | tee /etc/resolv.conf
 # Use Cloudflare DNS
@@ -12,7 +15,6 @@ nameserver 1.0.0.1
 # DNSSEC validation
 anchor /var/lib/unbound/root.key
 EOF
-apt update -y && apt install -y unbound
 unbound-anchor
 
 # Setup PostgreSQL for Miniflux development
