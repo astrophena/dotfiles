@@ -60,7 +60,14 @@ let g:netrw_altv=1
 let g:netrw_winsize=15
 augroup ProjectDrawer
   autocmd!
-  autocmd VimEnter * :Vexplore
+  autocmd VimEnter * nmap <buffer> <F5> :Vexplore<CR>
+augroup END
+autocmd FileType netrw setl bufhidden=delete
+
+" Automatically quit vim if netrw is last and only buffer.
+augroup netrwClose
+  autocmd!
+  autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw"|q|endif
 augroup END
 
 set pastetoggle=<F2>
