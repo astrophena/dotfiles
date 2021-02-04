@@ -72,10 +72,10 @@ endif
 call plug#begin('~/.vim/plugins')
 
 Plug 'chriskempson/base16-vim'
-Plug 'kchmck/vim-coffee-script'
 if executable('go')
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 endif
+Plug 'lluchs/vim-wren'
 
 call plug#end()
 
