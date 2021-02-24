@@ -33,7 +33,10 @@ __setup_go() {
     return
   fi
 
-  export GOPATH="$HOME/code/go"
+  export GOPATH="$XDG_CACHE_HOME/go"
+  export GOCACHE="$XDG_CACHE_HOME/go/build"
+  export GOMODCACHE="$XDG_CACHE_HOME/go/pkg/mod"
+  export GOFLAGS="-modcacherw"
 
   export GO111MODULE=on
   export GOBIN="$HOME/.local/bin"
