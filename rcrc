@@ -1,4 +1,4 @@
-DOTFILES_DIRS="$HOME/code/dotfiles"
+DOTFILES_DIRS="$HOME/s/dotfiles"
 EXCLUDES="*.md docs install.sh"
 UNDOTTED="bin"
 

@@ -37,7 +37,7 @@ _() {
     }
   }
 
-  [[ -d "$HOME/code/dotfiles" ]] &&
+  [[ -d "$HOME/s/dotfiles" ]] &&
     error "dotfiles are already installed. Run u to update them."
 
   require_command "rcup" "rcm"
@@ -46,10 +46,10 @@ _() {
   require_command "htop" "htop"
 
   info "==> Cloning Git repository..."
-  git clone -q https://github.com/astrophena/dotfiles "$HOME/code/dotfiles"
+  git clone -q https://github.com/astrophena/dotfiles "$HOME/s/dotfiles"
 
   info "==> Installing dotfiles..."
-  RCRC="$HOME/code/dotfiles/rcrc" rcup -f
+  RCRC="$HOME/s/dotfiles/rcrc" rcup -f
 
   info "==> Installing Vim plugins..."
   vim -es -u ~/.vim/vimrc -i NONE -c "PlugInstall" -c "qa"
