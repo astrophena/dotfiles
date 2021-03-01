@@ -93,8 +93,8 @@ unset HISTFILE
 
 # First of all, let’s set the window title:
 #
-#  ~/code/dotfiles            => local
-#  ~/code/dotfiles (romana)   => in SSH session
+#  ~/s/dotfiles            => local
+#  ~/s/dotfiles (romana)   => in SSH session
 
 if [[ ! -z "$SSH_CONNECTION" ]]; then
   if [[ ! -f "/google/devshell/bashrc.google" ]]; then
@@ -115,8 +115,8 @@ fi
 
 # Finally, set the prompt:
 #
-#  ~/code/dotfiles ->           => local
-#  ~/code/dotfiles romana ->    => in SSH session
+#  ~/s/dotfiles ->           => local
+#  ~/s/dotfiles romana ->    => in SSH session
 
 if [[ ! -z "$SSH_CONNECTION" ]]; then
   if [[ ! -f "/google/devshell/bashrc.google" ]]; then
