@@ -92,6 +92,7 @@ if executable('go')
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 endif
 Plug 'lluchs/vim-wren'
+Plug 'LnL7/vim-nix'
 
 call plug#end()
 
