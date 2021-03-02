@@ -12,6 +12,10 @@ if command -v neofetch >/dev/null 2>&1; then
   TAGS="neofetch ${TAGS}"
 fi
 
+if command -v byobu >/dev/null 2>&1; then
+  TAGS="byobu ${TAGS}"
+fi
+
 if command -v kitty >/dev/null 2>&1; then
   TAGS="kitty ${TAGS}"
 fi
