@@ -1,12 +1,6 @@
 # If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
-# Set up Cloud Shell environment if we are using it.
-#
-# Do it early to overwrite some defaults.
-[[ -f /google/devshell/bashrc.google ]] &&
-  . /google/devshell/bashrc.google
-
 # See https://wiki.archlinux.org/index.php/XDG_Base_Directory.
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -24,24 +18,12 @@ export VISUAL=vim
 
 # Set up local Go toolchain.
 __setup_go() {
-  if [[ -d "$HOME/.local/go" ]]; then
-    local goroot="$HOME/.local/go"
-  elif [[ -d "/usr/local/go" ]]; then
-    local goroot="/usr/local/go"
-  else
-    # no go found, give up
-    return
-  fi
-
   export GOPATH="$XDG_CACHE_HOME/go"
   export GOCACHE="$XDG_CACHE_HOME/go/build"
   export GOMODCACHE="$XDG_CACHE_HOME/go/pkg/mod"
   export GOFLAGS="-modcacherw"
-
   export GO111MODULE=on
   export GOBIN="$HOME/.local/bin"
-  export GOROOT="$goroot"
-  export PATH="$goroot/bin:$PATH"
 }
 __setup_go
 
