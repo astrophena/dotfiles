@@ -6,6 +6,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
+# Set the locale.
+export LANG="en_US.UTF-8"
+
 # Set the default editor.
 export EDITOR=vim
 export VISUAL=vim
