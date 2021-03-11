@@ -88,9 +88,15 @@ endif
 call plug#begin('~/.vim/plugins')
 
 Plug 'chriskempson/base16-vim'
-Plug 'mattn/vim-goimports'
+if executable('goimports')
+  Plug 'mattn/vim-goimports', { 'for': 'go' }
+endif
 
 call plug#end()
+
+if executable('goimports')
+  
+endif
 
 set termguicolors
 colorscheme base16-tomorrow-night
