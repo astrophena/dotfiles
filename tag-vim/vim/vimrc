@@ -94,9 +94,5 @@ endif
 
 call plug#end()
 
-if executable('goimports')
-  
-endif
-
 set termguicolors
 colorscheme base16-tomorrow-night
