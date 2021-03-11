@@ -25,5 +25,5 @@ Just run `u`. It will pull the latest changes, symlink new files and reload `~/.
 
 * `tag-git/config/git/message` ([license](https://github.com/thoughtbot/dotfiles/blob/master/LICENSE))
 * `tag-termux/termux/font.ttf` ([license](https://github.com/tonsky/FiraCode/blob/master/LICENSE))
-* `tag-vim/bin/e` ([license](https://github.com/holman/dotfiles/blob/master/LICENSE.md))
+* `bin/e` ([license](https://github.com/holman/dotfiles/blob/master/LICENSE.md))
 * `tag-git/bin/git-credential-netrc` ([license](https://github.com/git/git/blob/master/contrib/credential/netrc/git-credential-netrc.perl#L69))
