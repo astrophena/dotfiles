@@ -30,9 +30,6 @@ __setup_go() {
 }
 __setup_go
 
-# Enable color support in mage.
-export MAGEFILE_ENABLE_COLOR=true
-
 # Update window size after every command.
 shopt -s checkwinsize
 
@@ -72,21 +69,13 @@ unset HISTFILE
 # Set the prompt.
 #
 
-# On Google Cloud Shell we have random hostnames like this:
-#   cs-25870698597-default-default-tcxh5
-# So let’s use use cloudshell in prompt and window title instead of hostname.
-
 # First of all, let’s set the window title:
 #
-#  ~/s/dotfiles            => local
-#  ~/s/dotfiles (romana)   => in SSH session
+#  ~/src/dotfiles            => local
+#  ~/src/dotfiles (romana)   => in SSH session
 
 if [[ ! -z "$SSH_CONNECTION" ]]; then
-  if [[ ! -f "/google/devshell/bashrc.google" ]]; then
-    PS1="\[\e]0;\w ("$(hostname)")\a\]"
-  else
-    PS1="\[\e]0;\w ("cloudshell")\a\]"
-  fi
+  PS1="\[\e]0;\w ("$HOSTNAME")\a\]"
 else
   PS1="\[\e]0;\w\a\]"
 fi
@@ -100,15 +89,11 @@ fi
 
 # Finally, set the prompt:
 #
-#  ~/s/dotfiles ->           => local
-#  ~/s/dotfiles romana ->    => in SSH session
+#  ~/src/dotfiles ->           => local
+#  ~/src/dotfiles romana ->    => in SSH session
 
 if [[ ! -z "$SSH_CONNECTION" ]]; then
-  if [[ ! -f "/google/devshell/bashrc.google" ]]; then
-    export PS1+="\w \[\033[1;33m\]"$(hostname)"\[\033[0m\] -> "
-  else
-    export PS1+="\w \[\033[1;33m\]"cloudshell"\[\033[0m\] -> "
-  fi
+  export PS1+="\w \[\033[1;33m\]"$HOSTNAME"\[\033[0m\] -> "
 else
   export PS1+="\w\[\033[0m\] -> "
 fi
@@ -126,10 +111,6 @@ alias egrep='egrep --color=auto'
 alias l='ls -h'
 alias ll='l -l'
 alias la='l -a'
-
-# Short mage aliases.
-alias m=mage
-alias ml='mage -l'
 
 # Reload ~/.bashrc.
 r() {
