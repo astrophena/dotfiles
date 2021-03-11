@@ -88,17 +88,9 @@ endif
 call plug#begin('~/.vim/plugins')
 
 Plug 'chriskempson/base16-vim'
-if executable('go')
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
-endif
+Plug 'mattn/vim-goimports'
 
 call plug#end()
-
-if executable('go')
-  let g:go_fmt_command='goimports'
-  let g:go_auto_type_info=1
-  set completeopt-=preview
-endif
 
 set termguicolors
 colorscheme base16-tomorrow-night
