@@ -6,5 +6,15 @@ IdentityFile ~/.ssh/key
 # Enable compression.
 Compression yes
 
+# Avoid dropped connections in certain network environments.
+TCPKeepAlive yes
+ServerAliveInterval 15
+ServerAliveCountMax 6
+
+# Multiplex channels to the same server with a local control file.
+ControlMaster auto
+ControlPath /tmp/%r@%h:%p
+ControlPersist yes
+
 # Put local configs to ~/.ssh/config.local.
 Include config.local
