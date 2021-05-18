@@ -13,7 +13,7 @@ ServerAliveCountMax 6
 
 # Multiplex channels to the same server with a local control file.
 ControlMaster auto
-ControlPath /tmp/%r@%h:%p
+ControlPath ~/.ssh/control/%r@%h:%p
 ControlPersist yes
 
 # Put local configs to ~/.ssh/config.local.

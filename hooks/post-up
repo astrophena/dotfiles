@@ -22,6 +22,8 @@ error() {
   chmod 600 "$HOME/.netrc"
 }
 
+[[ ! -d "$HOME/.ssh/control" ]] && mkdir -p "$HOME/.ssh/control"
+
 [[ ! -f "$HOME/.ssh/key" ]] && {
   info "==> Generating SSH key..."
   ssh-keygen -t ed25519 -C "$(hostname)" -q -N "" -f ~/.ssh/key
