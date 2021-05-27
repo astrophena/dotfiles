@@ -94,5 +94,7 @@ endif
 
 call plug#end()
 
+nnoremap <esc>^[ <esc>^[
+
 set termguicolors
 colorscheme base16-tomorrow-night
