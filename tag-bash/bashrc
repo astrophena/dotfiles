@@ -160,6 +160,10 @@ g() {
   fi
 }
 
+# Lovely gh aliases.
+alias pr='gh pr create -f'
+alias merge='gh pr merge -s -d; g pull'
+
 # Colorize man pages.
 man() {
   env \
