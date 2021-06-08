@@ -77,6 +77,7 @@ set laststatus=1
 set title
 
 autocmd FileType go setlocal noexpandtab
+autocmd FileType sh setlocal noexpandtab
 autocmd FileType gitconfig setlocal noexpandtab
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -91,8 +92,15 @@ Plug 'chriskempson/base16-vim'
 if executable('goimports')
   Plug 'mattn/vim-goimports', { 'for': 'go' }
 endif
+if executable('shfmt')
+  Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
+endif
 
 call plug#end()
+
+if executable('shfmt')
+  let g:shfmt_fmt_on_save=1
+endif
 
 nnoremap <esc>^[ <esc>^[
 
