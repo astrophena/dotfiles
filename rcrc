@@ -3,33 +3,33 @@ EXCLUDES="*.md install.sh"
 UNDOTTED="bin"
 
 if command -v bash >/dev/null 2>&1; then
-  TAGS="bash ${TAGS}"
+	TAGS="bash ${TAGS}"
 fi
 
 if command -v curl >/dev/null 2>&1; then
-  TAGS="curl ${TAGS}"
+	TAGS="curl ${TAGS}"
 fi
 
 if command -v git >/dev/null 2>&1; then
-  TAGS="git ${TAGS}"
+	TAGS="git ${TAGS}"
 fi
 
 if command -v htop >/dev/null 2>&1; then
-  TAGS="htop ${TAGS}"
+	TAGS="htop ${TAGS}"
 fi
 
 if command -v neofetch >/dev/null 2>&1; then
-  TAGS="neofetch ${TAGS}"
+	TAGS="neofetch ${TAGS}"
 fi
 
 if command -v ssh >/dev/null 2>&1; then
-  TAGS="ssh ${TAGS}"
+	TAGS="ssh ${TAGS}"
 fi
 
 if command -v vim >/dev/null 2>&1; then
-  TAGS="vim ${TAGS}"
+	TAGS="vim ${TAGS}"
 fi
 
 if [ "$(uname -o)" = "Android" ]; then
-  TAGS="termux ${TAGS}"
+	TAGS="termux ${TAGS}"
 fi
