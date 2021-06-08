@@ -5,8 +5,8 @@
 GITHUB_USERNAME=astrophena
 
 if [ -z "$1" ]; then
-  echo 'repo name is required'
-  exit 1
+	echo 'repo name is required'
+	exit 1
 fi
 
 git clone "https://github.com/${GITHUB_USERNAME}/$1"

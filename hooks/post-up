@@ -6,25 +6,25 @@ set -euo pipefail
 no_color='\033[0m'
 
 info() {
-  local yellow_color='\033[0;33m'
-  echo -e "${yellow_color}"$@"${no_color}"
+	local yellow_color='\033[0;33m'
+	echo -e "${yellow_color}"$@"${no_color}"
 }
 
 error() {
-  local red_color='\033[0;31m'
-  echo -e "${red_color}"$@"${no_color}"
-  exit 1
+	local red_color='\033[0;31m'
+	echo -e "${red_color}"$@"${no_color}"
+	exit 1
 }
 
 [[ ! -f "$HOME/.netrc" ]] && {
-  info "==> Creating .netrc file..."
-  touch "$HOME/.netrc"
-  chmod 600 "$HOME/.netrc"
+	info "==> Creating .netrc file..."
+	touch "$HOME/.netrc"
+	chmod 600 "$HOME/.netrc"
 }
 
 [[ ! -d "$HOME/.ssh/control" ]] && mkdir -p "$HOME/.ssh/control"
 
 [[ ! -f "$HOME/.ssh/key" ]] && {
-  info "==> Generating SSH key..."
-  ssh-keygen -t ed25519 -C "$(hostname)" -q -N "" -f ~/.ssh/key
+	info "==> Generating SSH key..."
+	ssh-keygen -t ed25519 -C "$(hostname)" -q -N "" -f ~/.ssh/key
 }
