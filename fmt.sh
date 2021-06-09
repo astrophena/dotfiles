@@ -5,6 +5,7 @@ set -euo pipefail
 # Include here files that shfmt can't detect.
 ADDITIONAL_FILES=(
 	"tag-bash/bashrc"
+	"tag-bash/profile"
 	"tag-neofetch/config/neofetch/config.conf"
 	"rcrc"
 )
