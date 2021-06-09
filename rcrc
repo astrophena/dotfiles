@@ -1,5 +1,5 @@
 DOTFILES_DIRS="$HOME/src/dotfiles"
-EXCLUDES="*.md install.sh"
+EXCLUDES="*.md fmt.sh install.sh"
 UNDOTTED="bin"
 
 if command -v bash >/dev/null 2>&1; then
