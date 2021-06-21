@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+#
+# Simple Tailscale API wrapper.
+#
+# Requires jq and curl.
+#
+# See https://github.com/tailscale/tailscale/blob/main/api.md for
+# Tailscale API docs.
+
+set -euo pipefail
+
+url="https://api.tailscale.com/api/v2"
+tailnet="astrophena.name"
+
+case "${1:-}" in
+acl)
+	curl -s "$url/tailnet/$tailnet/acl" | jq
+	;;
+devices)
+	curl -s "$url/tailnet/$tailnet/devices" | jq
+	;;
+delete-device)
+	[[ ! -z "${2:-}" ]] || {
+		echo "Unknown device ID."
+		exit 1
+	}
+	if curl -s --fail-with-body -X DELETE "$url/device/$2" | jq; then
+		echo "Device deleted."
+	fi
+	;;
+show-device)
+	[[ ! -z "${2:-}" ]] || {
+		echo "Unknown device ID."
+		exit 1
+	}
+
+	curl -s "$url/device/$2" | jq
+	;;
+*)
+	echo "Unknown command."
+	exit 1
+	;;
+esac
