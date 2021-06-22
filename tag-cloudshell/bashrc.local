@@ -1,0 +1,17 @@
+# Start up tailscaled if it's not running.
+_tailscaled_start() {
+	pidof tailscaled > /dev/null 2>&1 || {
+		nohup tailscaled \
+			-socket ~/.local/share/tailscale/socket \
+			-tun userspace-networking \
+			-socks5-server localhost:1055 \
+			> /dev/null 2>&1 &
+	}
+}
+_tailscaled_start
+
+# See https://tailscale.com/kb/1108/cloudrun/.
+export ALL_PROXY="socks5://localhost:1055"
+
+# Use local socket in Tailscale CLI.
+alias tailscale='tailscale --socket ~/.local/share/tailscale/socket'

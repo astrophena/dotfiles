@@ -2,6 +2,10 @@ DOTFILES_DIRS="$HOME/src/dotfiles"
 EXCLUDES="*.md fmt.sh install.sh"
 UNDOTTED="bin"
 
+if [ -d "/google/devshell/bashrc.google" ]; then
+	TAGS="cloudshell ${TAGS}"
+fi
+
 if command -v bash >/dev/null 2>&1; then
 	TAGS="bash ${TAGS}"
 fi
