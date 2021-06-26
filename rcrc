@@ -2,7 +2,7 @@ DOTFILES_DIRS="$HOME/src/dotfiles"
 EXCLUDES="*.md fmt.sh install.sh"
 UNDOTTED="bin"
 
-if [ -d "/google/devshell/bashrc.google" ]; then
+if [ -f "/google/devshell/bashrc.google" ]; then
 	TAGS="cloudshell ${TAGS}"
 fi
 
