@@ -17,7 +17,11 @@ acl)
 	curl -s "$url/tailnet/$tailnet/acl" | jq
 	;;
 devices)
-	curl -s "$url/tailnet/$tailnet/devices" | jq
+	jqargs=""
+	if [[ ! "${2:-}" == "--full" ]]; then
+		jqargs=".devices[] | {id: .id, name: .name}"
+	fi
+	curl -s "$url/tailnet/$tailnet/devices" | jq "$jqargs"
 	;;
 delete-device)
 	[[ ! -z "${2:-}" ]] || {
