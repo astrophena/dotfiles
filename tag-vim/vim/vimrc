@@ -104,5 +104,10 @@ endif
 
 nnoremap <esc>^[ <esc>^[
 
+" Per-project .vimrc files, see
+" https://andrew.stwrt.ca/posts/project-specific-vimrc/.
+set exrc
+set secure
+
 set termguicolors
 colorscheme base16-tomorrow-night
